@@ -55,7 +55,7 @@
 
     <div class="account-config-warning" id="accountConfigWarning" hidden>
       <strong>Supabaseの設定がまだ入っていません。</strong>
-      <p><code>/account/account-config.js</code> にProject URLとanon keyを設定すると、登録・ログインが使えるようになります。</p>
+      <p><code>/account/account-config.js</code> にProject URLと公開キーを設定すると、登録・ログインが使えるようになります。</p>
     </div>
 
     <div class="account-message" id="accountMessage" aria-live="polite"></div>
@@ -69,7 +69,6 @@
       <div class="account-panel" id="loginPanel">
         <p class="eyebrow">SIGN IN</p>
         <h2>ログイン</h2>
-
         <form id="loginForm" class="account-form">
           <label>
             <span>メールアドレス</span>
@@ -81,14 +80,12 @@
           </label>
           <button class="account-primary" type="submit">ログイン</button>
         </form>
-
         <button class="account-text-button" id="forgotPasswordButton" type="button">パスワードを忘れた場合</button>
       </div>
 
       <div class="account-panel" id="signupPanel" hidden>
         <p class="eyebrow">CREATE ACCOUNT</p>
         <h2>新規登録</h2>
-
         <form id="signupForm" class="account-form">
           <label>
             <span>ユーザー名</span>
@@ -108,8 +105,26 @@
             <span>パスワード確認</span>
             <input id="signupPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required>
           </label>
-          <button class="account-primary" type="submit">アカウントを作成</button>
+          <button class="account-primary" type="submit">確認コードを送信</button>
         </form>
+      </div>
+    </section>
+
+    <section class="account-shell" id="verifyArea" hidden>
+      <div class="account-panel">
+        <p class="eyebrow">VERIFY EMAIL</p>
+        <h2>メールを確認</h2>
+        <p class="section-lead">Yuteneから届いた6桁の確認コードを入力してください。</p>
+        <form id="verifyForm" class="account-form">
+          <label>
+            <span>確認コード</span>
+            <input id="verifyCode" type="text" inputmode="numeric" autocomplete="one-time-code"
+                   minlength="6" maxlength="6" pattern="[0-9]{6}" placeholder="000000" required>
+          </label>
+          <button class="account-primary" type="submit">確認して登録完了</button>
+        </form>
+        <button class="account-text-button" id="resendCodeButton" type="button">確認コードを再送</button>
+        <button class="account-text-button" id="backToSignupButton" type="button">メールアドレスを変更</button>
       </div>
     </section>
 

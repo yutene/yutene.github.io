@@ -3,6 +3,7 @@
   const warning=document.getElementById("accountConfigWarning");
   const message=document.getElementById("accountMessage");
   const authArea=document.getElementById("authArea");
+  const verifyArea=document.getElementById("verifyArea");
   const profileArea=document.getElementById("profileArea");
   const recoveryArea=document.getElementById("recoveryArea");
 
@@ -10,6 +11,8 @@
   const signupTab=document.getElementById("signupTab");
   const loginPanel=document.getElementById("loginPanel");
   const signupPanel=document.getElementById("signupPanel");
+
+  let pendingSignupEmail="";
 
   function showMessage(text,type="info"){
     if(!message) return;
@@ -37,6 +40,7 @@
     signupTab.classList.toggle("active",!login);
     loginPanel.hidden=!login;
     signupPanel.hidden=login;
+    verifyArea.hidden=true;
     showMessage("");
   }
 
@@ -66,12 +70,15 @@
   }
 
   function renderUser(user){
+    verifyArea.hidden=true;
+    recoveryArea.hidden=true;
+
     if(!user){
       authArea.hidden=false;
       profileArea.hidden=true;
-      recoveryArea.hidden=true;
       return;
     }
+
     const username=(user.user_metadata?.username || user.email?.split("@")[0] || "Yutene User").trim();
     document.getElementById("profileUsername").textContent=username;
     document.getElementById("profileUsernameInput").value=username;
@@ -87,9 +94,20 @@
     return name;
   }
 
+  function openVerify(email){
+    pendingSignupEmail=email;
+    authArea.hidden=true;
+    profileArea.hidden=true;
+    recoveryArea.hidden=true;
+    verifyArea.hidden=false;
+    document.getElementById("verifyCode").value="";
+    document.getElementById("verifyCode").focus();
+  }
+
   document.getElementById("signupForm")?.addEventListener("submit",async e=>{
     e.preventDefault();
     showMessage("");
+
     const username=document.getElementById("signupUsername").value;
     const email=document.getElementById("signupEmail").value.trim();
     const password=document.getElementById("signupPassword").value;
@@ -114,11 +132,70 @@
         showMessage("アカウントを作成しました。","ok");
         renderUser(data.user);
       }else{
-        showMessage("確認メールを送信しました。メール内のリンクを開くと登録が完了します。","ok");
+        openVerify(email);
+        showMessage("Yuteneから確認コードを送信しました。","ok");
       }
     }catch(err){
       showMessage(err.message || "アカウントを作成できませんでした。","error");
     }
+  });
+
+  document.getElementById("verifyForm")?.addEventListener("submit",async e=>{
+    e.preventDefault();
+    showMessage("");
+
+    const token=document.getElementById("verifyCode").value.trim();
+
+    if(!pendingSignupEmail){
+      showMessage("確認するメールアドレスがありません。新規登録からやり直してください。","error");
+      return;
+    }
+    if(!/^\d{6}$/.test(token)){
+      showMessage("6桁の確認コードを入力してください。","error");
+      return;
+    }
+
+    try{
+      const {data,error}=await client.auth.verifyOtp({
+        email:pendingSignupEmail,
+        token,
+        type:"email"
+      });
+      if(error) throw error;
+
+      pendingSignupEmail="";
+      renderUser(data.user);
+      showMessage("メール確認が完了しました。アカウントを作成しました。","ok");
+    }catch(err){
+      showMessage("確認コードが違うか、有効期限が切れています。","error");
+    }
+  });
+
+  document.getElementById("resendCodeButton")?.addEventListener("click",async()=>{
+    if(!pendingSignupEmail){
+      showMessage("確認するメールアドレスがありません。","error");
+      return;
+    }
+
+    try{
+      const {error}=await client.auth.resend({
+        type:"signup",
+        email:pendingSignupEmail,
+        options:{
+          emailRedirectTo:`${location.origin}/account/`
+        }
+      });
+      if(error) throw error;
+      showMessage("確認コードを再送しました。","ok");
+    }catch(err){
+      showMessage(err.message || "確認コードを再送できませんでした。","error");
+    }
+  });
+
+  document.getElementById("backToSignupButton")?.addEventListener("click",()=>{
+    verifyArea.hidden=true;
+    authArea.hidden=false;
+    switchTab("signup");
   });
 
   document.getElementById("loginForm")?.addEventListener("submit",async e=>{
@@ -126,6 +203,7 @@
     showMessage("");
     const email=document.getElementById("loginEmail").value.trim();
     const password=document.getElementById("loginPassword").value;
+
     try{
       const {data,error}=await client.auth.signInWithPassword({email,password});
       if(error) throw error;
@@ -181,6 +259,7 @@
     e.preventDefault();
     const password=document.getElementById("recoveryPassword").value;
     const confirm=document.getElementById("recoveryPasswordConfirm").value;
+
     if(password.length<8){
       showMessage("パスワードは8文字以上にしてください。","error");
       return;
@@ -189,6 +268,7 @@
       showMessage("確認用パスワードが一致していません。","error");
       return;
     }
+
     try{
       const {error}=await client.auth.updateUser({password});
       if(error) throw error;
@@ -204,15 +284,18 @@
   client.auth.onAuthStateChange((event,session)=>{
     if(event==="PASSWORD_RECOVERY"){
       authArea.hidden=true;
+      verifyArea.hidden=true;
       profileArea.hidden=true;
       recoveryArea.hidden=false;
       showMessage("新しいパスワードを設定してください。","info");
       return;
     }
+
     if(event==="SIGNED_IN" || event==="USER_UPDATED" || event==="TOKEN_REFRESHED"){
       if(!recoveryArea.hidden) return;
       renderUser(session?.user || null);
     }
+
     if(event==="SIGNED_OUT"){
       renderUser(null);
     }
@@ -223,6 +306,7 @@
 
   if(new URLSearchParams(location.search).get("reset")==="1" && session?.user){
     authArea.hidden=true;
+    verifyArea.hidden=true;
     profileArea.hidden=true;
     recoveryArea.hidden=false;
     showMessage("新しいパスワードを設定してください。","info");
