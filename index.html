@@ -3,31 +3,21 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Minecraftサーバーの運営、MOD・プラグイン制作など、Yuteneの活動をまとめた公式サイトです。">
+<meta name="description" content="Yuteneアカウントの登録・ログイン・管理ページです。">
 <meta name="theme-color" content="#101712">
-<link rel="canonical" href="https://yutene.net/">
+<link rel="canonical" href="https://yutene.net/account/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 <link rel="manifest" href="/site.webmanifest">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yutene">
-<meta property="og:title" content="Yutene">
-<meta property="og:description" content="Minecraftサーバーの運営、MOD・プラグイン制作など、Yuteneの活動をまとめた公式サイトです。">
-<meta property="og:url" content="https://yutene.net/">
+<meta property="og:title" content="アカウント | Yutene">
+<meta property="og:description" content="Yuteneアカウントの登録・ログイン・管理ページです。">
+<meta property="og:url" content="https://yutene.net/account/">
 <meta property="og:image" content="https://yutene.net/og.png">
 <meta name="twitter:card" content="summary_large_image">
-<title>Yutene</title>
+<title>アカウント | Yutene</title>
 <link rel="stylesheet" href="/style.css">
-<script>
-(function(){
-  const p=location.pathname, h=location.hash;
-  if(p.endsWith("/index.html")){
-    if(h==="#servers") return location.replace("/servers/");
-    if(h==="#news") return location.replace("/news/");
-    if(h==="#creations") return location.replace("/");
-    history.replaceState(null,"","/");
-  }
-})();
-</script>
+<link rel="stylesheet" href="/account/account.css">
 </head>
 <body>
 
@@ -39,84 +29,154 @@
     </button>
   </div>
 </header>
+
 <div class="overlay" id="menuOverlay" aria-hidden="true">
   <aside class="drawer" aria-label="メニュー">
     <div class="drawer-head">
       <span class="drawer-title">MENU</span>
       <button class="close" id="menuClose" aria-label="メニューを閉じる">×</button>
     </div>
-    <nav class="drawer-nav">
-      <a href="/"><span>ホーム</span><small>HOME</small></a>
-      <a href="/servers/"><span>サーバー</span><small>SERVERS</small></a>
-      <a href="/join/"><span>参加方法</span><small>JOIN</small></a>
-      <a href="/status/"><span>ステータス</span><small>STATUS</small></a>
-      <a href="/rules/"><span>ルール</span><small>RULES</small></a>
-      <a href="/news/"><span>お知らせ</span><small>NEWS</small></a>
-      <div class="drawer-sep"></div>
-      <a href="/creations/"><span>制作物</span><small>CREATIONS</small></a>
-      <div class="drawer-disabled" aria-disabled="true">
-        <span>アカウント</span><span class="not-ready">未実装</span>
-      </div>
-    </nav>
+    <nav class="drawer-nav"></nav>
   </aside>
 </div>
 
 <main>
-<section class="hero">
-  <div class="wrap hero-inner">
-    <p class="kicker">YUTENE</p>
-    <h1>Yutene</h1>
-    <p class="hero-copy">Minecraftサーバーの運営、MOD・プラグイン制作など、Yuteneの活動をまとめています。</p>
-    <div class="hero-actions">
-      <a class="btn btn-main" href="/servers/">サーバーを見る</a>
-      <a class="btn btn-sub" href="/news/">お知らせ</a>
-    </div>
+<section class="page-hero account-hero">
+  <div class="wrap">
+    <a class="back-link" href="/">← ホームへ</a>
+    <p class="kicker">ACCOUNT</p>
+    <h1>アカウント</h1>
+    <p>Yuteneアカウントを作成・管理できます。Minecraftアカウント連携はまだ使用しません。</p>
   </div>
 </section>
 
-<section class="category-section">
-  <div class="wrap">
-    <div class="category-grid">
-      <a class="category-card" href="/servers/">
-        <span class="category-icon">S</span>
-        <h2>サーバー</h2>
-        <p>Yuteneが運営しているMinecraftサーバー。</p>
-        <span class="category-link">サーバーを見る →</span>
-      </a>
+<section class="section">
+  <div class="wrap account-wrap">
 
-      <a class="category-card" href="/creations/">
-        <span class="category-icon">C</span>
-        <h2>制作物</h2>
-        <p>Yuteneが制作するMOD・Plugin。</p>
-        <span class="category-link">制作物を見る →</span>
-      </a>
-
-      <a class="category-card" href="/join/">
-        <span class="category-icon">J</span>
-        <h2>参加方法</h2>
-        <p>サーバーへの接続先と参加手順。</p>
-        <span class="category-link">参加方法を見る →</span>
-      </a>
-
-      <a class="category-card" href="/news/">
-        <span class="category-icon">N</span>
-        <h2>お知らせ</h2>
-        <p>サイト・サーバーなどの更新情報。</p>
-        <span class="category-link">お知らせを見る →</span>
-      </a>
+    <div class="account-config-warning" id="accountConfigWarning" hidden>
+      <strong>Supabaseの設定がまだ入っていません。</strong>
+      <p><code>/account/account-config.js</code> にProject URLと公開キーを設定すると、登録・ログインが使えるようになります。</p>
     </div>
-  </div>
-</section>
 
-<section class="section section-white">
-  <div class="wrap">
-    <p class="eyebrow">QUICK ACCESS</p>
-    <h2 class="section-title">すぐ見る</h2>
-    <div class="quick-grid">
-      <a class="quick-link" href="/status/">ステータス<small>サーバーの現在状態</small></a>
-      <a class="quick-link" href="/rules/">ルール<small>参加前に確認</small></a>
-      <a class="quick-link" href="/join/">参加方法<small>mc.yutene.net</small></a>
-    </div>
+    <div class="account-message" id="accountMessage" aria-live="polite"></div>
+
+    <section class="account-shell" id="authArea">
+      <div class="account-tabs" role="tablist" aria-label="アカウント操作">
+        <button class="account-tab active" id="loginTab" type="button">ログイン</button>
+        <button class="account-tab" id="signupTab" type="button">新規登録</button>
+      </div>
+
+      <div class="account-panel" id="loginPanel">
+        <p class="eyebrow">SIGN IN</p>
+        <h2>ログイン</h2>
+        <form id="loginForm" class="account-form">
+          <label>
+            <span>メールアドレス</span>
+            <input id="loginEmail" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            <span>パスワード</span>
+            <input id="loginPassword" type="password" autocomplete="current-password" minlength="8" required>
+          </label>
+          <button class="account-primary" type="submit">ログイン</button>
+        </form>
+        <button class="account-text-button" id="forgotPasswordButton" type="button">パスワードを忘れた場合</button>
+      </div>
+
+      <div class="account-panel" id="signupPanel" hidden>
+        <p class="eyebrow">CREATE ACCOUNT</p>
+        <h2>新規登録</h2>
+        <form id="signupForm" class="account-form">
+          <label>
+            <span>ユーザー名</span>
+            <input id="signupUsername" type="text" autocomplete="nickname" minlength="2" maxlength="20" required>
+            <small>2〜20文字</small>
+          </label>
+          <label>
+            <span>メールアドレス</span>
+            <input id="signupEmail" type="email" autocomplete="email" required>
+          </label>
+          <label>
+            <span>パスワード</span>
+            <input id="signupPassword" type="password" autocomplete="new-password" minlength="8" required>
+            <small>8文字以上</small>
+          </label>
+          <label>
+            <span>パスワード確認</span>
+            <input id="signupPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required>
+          </label>
+          <button class="account-primary" type="submit">確認コードを送信</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="account-shell" id="verifyArea" hidden>
+      <div class="account-panel">
+        <p class="eyebrow">VERIFY EMAIL</p>
+        <h2>メールを確認</h2>
+        <p class="section-lead">Yuteneから届いた6桁の確認コードを入力してください。</p>
+        <form id="verifyForm" class="account-form">
+          <label>
+            <span>確認コード</span>
+            <input id="verifyCode" type="text" inputmode="numeric" autocomplete="one-time-code"
+                   minlength="6" maxlength="6" pattern="[0-9]{6}" placeholder="000000" required>
+          </label>
+          <button class="account-primary" type="submit">確認して登録完了</button>
+        </form>
+        <button class="account-text-button" id="resendCodeButton" type="button">確認コードを再送</button>
+        <button class="account-text-button" id="backToSignupButton" type="button">メールアドレスを変更</button>
+      </div>
+    </section>
+
+    <section class="account-shell" id="profileArea" hidden>
+      <div class="account-profile-head">
+        <div>
+          <p class="eyebrow">MY ACCOUNT</p>
+          <h2 id="profileUsername">Yutene User</h2>
+        </div>
+        <button class="account-secondary" id="logoutButton" type="button">ログアウト</button>
+      </div>
+
+      <div class="account-details">
+        <div class="account-detail">
+          <span>メールアドレス</span>
+          <strong id="profileEmail">—</strong>
+        </div>
+        <div class="account-detail">
+          <span>登録日</span>
+          <strong id="profileCreatedAt">—</strong>
+        </div>
+        <div class="account-detail">
+          <span>Minecraftアカウント</span>
+          <strong class="account-unlinked">未連携</strong>
+        </div>
+      </div>
+
+      <div class="account-subpanel">
+        <h3>ユーザー名</h3>
+        <form id="usernameForm" class="account-inline-form">
+          <input id="profileUsernameInput" type="text" minlength="2" maxlength="20" required>
+          <button class="account-secondary" type="submit">変更</button>
+        </form>
+      </div>
+    </section>
+
+    <section class="account-shell" id="recoveryArea" hidden>
+      <p class="eyebrow">PASSWORD RESET</p>
+      <h2>新しいパスワード</h2>
+      <form id="recoveryForm" class="account-form">
+        <label>
+          <span>新しいパスワード</span>
+          <input id="recoveryPassword" type="password" autocomplete="new-password" minlength="8" required>
+        </label>
+        <label>
+          <span>新しいパスワード確認</span>
+          <input id="recoveryPasswordConfirm" type="password" autocomplete="new-password" minlength="8" required>
+        </label>
+        <button class="account-primary" type="submit">パスワードを変更</button>
+      </form>
+    </section>
+
   </div>
 </section>
 </main>
@@ -128,7 +188,10 @@
     <div class="footer-copy">© <span id="year"></span> Yutene</div>
   </div>
 </footer>
-<script src="/script.js"></script>
 
+<script src="/script.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script src="/account/account-config.js"></script>
+<script src="/account/account.js"></script>
 </body>
 </html>
