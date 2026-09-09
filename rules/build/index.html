@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Yutene 建築サーバーの固有ルールです。">
+<meta name="theme-color" content="#101712">
+<link rel="canonical" href="https://yutene.net/rules/build/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yutene">
+<meta property="og:title" content="建築サーバー ルール | Yutene">
+<meta property="og:description" content="Yutene 建築サーバーの固有ルールです。">
+<meta property="og:url" content="https://yutene.net/rules/build/">
+<meta property="og:image" content="https://yutene.net/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<title>建築サーバー ルール | Yutene</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="brand-mark">Y</span><span>YUTENE</span></a>
+    <button class="menu-button" id="menuOpen" aria-label="メニューを開く" aria-expanded="false">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+<div class="overlay" id="menuOverlay" aria-hidden="true">
+  <aside class="drawer" aria-label="メニュー">
+    <div class="drawer-head">
+      <span class="drawer-title">MENU</span>
+      <button class="close" id="menuClose" aria-label="メニューを閉じる">×</button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="/"><span>ホーム</span><small>HOME</small></a>
+      <a href="/servers/"><span>サーバー</span><small>SERVERS</small></a>
+      <a href="/join/"><span>参加方法</span><small>JOIN</small></a>
+      <a href="/status/"><span>ステータス</span><small>STATUS</small></a>
+      <a href="/rules/"><span>ルール</span><small>RULES</small></a>
+      <a href="/news/"><span>お知らせ</span><small>NEWS</small></a>
+      <div class="drawer-sep"></div>
+      <div class="drawer-disabled" aria-disabled="true">
+        <span>制作物</span><span class="not-ready">準備中</span>
+      </div>
+      <div class="drawer-disabled" aria-disabled="true">
+        <span>アカウント</span><span class="not-ready">未実装</span>
+      </div>
+    </nav>
+  </aside>
+</div>
+
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <a class="back-link" href="/rules/">← ルール一覧へ</a>
+    <p class="kicker">SERVER RULES / BUILD</p>
+    <h1>建築サーバー</h1>
+    <p>完全スーパーフラットのクリエイティブ建築サーバーです。WorldEdit・Litematicaも利用できます。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="join-grid">
+      <div class="info-card">
+        <h2>サーバー仕様</h2>
+        <ul class="rule-list">
+          <li>ゲームモードはクリエイティブです。</li>
+          <li>ワールドは完全スーパーフラットです。</li>
+          <li>WorldEditの使用は許可されています。</li>
+          <li>Litematicaの使用は許可されています。</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h2>他人の建築</h2>
+        <ul class="rule-list">
+          <li>他プレイヤーの建築物を、本人の許可なく破壊・改変する行為は禁止です。</li>
+          <li>共同建築では、参加者同士で編集範囲や方針を確認してください。</li>
+          <li>WorldEdit等を使う場合も、他人の建築に影響を与えないようにしてください。</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <strong>Yutene</strong>
+    <p>Minecraftサーバー、MOD、プラグインなどの活動をまとめたサイトです。</p>
+    <div class="footer-copy">© <span id="year"></span> Yutene</div>
+  </div>
+</footer>
+<script src="/script.js"></script>
+
+</body>
+</html>

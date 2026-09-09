@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Yutene 採掘サーバーの固有ルールです。">
+<meta name="theme-color" content="#101712">
+<link rel="canonical" href="https://yutene.net/rules/mining/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yutene">
+<meta property="og:title" content="採掘サーバー ルール | Yutene">
+<meta property="og:description" content="Yutene 採掘サーバーの固有ルールです。">
+<meta property="og:url" content="https://yutene.net/rules/mining/">
+<meta property="og:image" content="https://yutene.net/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<title>採掘サーバー ルール | Yutene</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="brand-mark">Y</span><span>YUTENE</span></a>
+    <button class="menu-button" id="menuOpen" aria-label="メニューを開く" aria-expanded="false">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+<div class="overlay" id="menuOverlay" aria-hidden="true">
+  <aside class="drawer" aria-label="メニュー">
+    <div class="drawer-head">
+      <span class="drawer-title">MENU</span>
+      <button class="close" id="menuClose" aria-label="メニューを閉じる">×</button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="/"><span>ホーム</span><small>HOME</small></a>
+      <a href="/servers/"><span>サーバー</span><small>SERVERS</small></a>
+      <a href="/join/"><span>参加方法</span><small>JOIN</small></a>
+      <a href="/status/"><span>ステータス</span><small>STATUS</small></a>
+      <a href="/rules/"><span>ルール</span><small>RULES</small></a>
+      <a href="/news/"><span>お知らせ</span><small>NEWS</small></a>
+      <div class="drawer-sep"></div>
+      <div class="drawer-disabled" aria-disabled="true">
+        <span>制作物</span><span class="not-ready">準備中</span>
+      </div>
+      <div class="drawer-disabled" aria-disabled="true">
+        <span>アカウント</span><span class="not-ready">未実装</span>
+      </div>
+    </nav>
+  </aside>
+</div>
+
+<main>
+<section class="page-hero">
+  <div class="wrap">
+    <a class="back-link" href="/rules/">← ルール一覧へ</a>
+    <p class="kicker">SERVER RULES / MINING</p>
+    <h1>採掘サーバー</h1>
+    <p>Yutene全体ルールに加えて、採掘サーバーでは以下の固有ルールが適用されます。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="info-card">
+      <h2>基本方針</h2>
+      <p>採掘、売却、成長、装備強化などを中心に遊ぶゲーム型サーバーです。通常のプレイやプレイヤー同士の取引は尊重しつつ、進行を不正に飛ばす行為を禁止します。</p>
+    </div>
+
+    <div class="join-grid">
+      <div class="info-card">
+        <h2>採掘・横取り</h2>
+        <ul class="rule-list">
+          <li>他プレイヤーが採掘したアイテムを故意に横取りする行為は禁止です。</li>
+          <li>他プレイヤーの採掘を継続的・故意に妨害する行為は禁止です。</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h2>不正な採掘</h2>
+        <ul class="rule-list">
+          <li>Xray、マクロ、Freecam、Baritoneなど、採掘や進行を不正に有利にする機能の使用は禁止です。</li>
+          <li>バグや設定ミスを利用して、お金、EXP、アイテム等を異常に取得する行為は禁止です。</li>
+          <li>運営が用意した進行・強化システムを不具合等で意図的に回避する行為は禁止です。</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h2>アイテムの受け渡し</h2>
+        <ul class="rule-list">
+          <li>通常の取引や少量のプレゼントは許可されています。</li>
+          <li>大量の通貨・高性能装備・大量アイテムの配布など、他プレイヤーの進行を大きく飛ばす目的の配布は禁止です。</li>
+        </ul>
+      </div>
+
+      <div class="info-card">
+        <h2>処分</h2>
+        <p>違反への対応は固定の処分表ではなく、行為の内容や影響を確認したうえで運営が決定します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <strong>Yutene</strong>
+    <p>Minecraftサーバー、MOD、プラグインなどの活動をまとめたサイトです。</p>
+    <div class="footer-copy">© <span id="year"></span> Yutene</div>
+  </div>
+</footer>
+<script src="/script.js"></script>
+
+</body>
+</html>
