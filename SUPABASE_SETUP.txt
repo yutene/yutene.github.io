@@ -1,0 +1,21 @@
+Yutene Account / Supabase setup
+
+1. Supabaseで新しいProjectを作成
+2. AuthenticationでEmail/Passwordを有効にする
+3. Site URL を https://yutene.net に設定
+4. Redirect URLs に以下を追加
+   https://yutene.net/account/
+   https://yutene.net/account/?reset=1
+5. SupabaseのProject URLと公開用anon keyを確認
+6. account/account-config.js の2項目を書き換える
+
+window.YUTENE_ACCOUNT_CONFIG = Object.freeze({
+  supabaseUrl: "https://xxxxxxxx.supabase.co",
+  supabaseAnonKey: "ここにanon key"
+});
+
+注意:
+- anon key はブラウザ用の公開キーです。
+- service_role key は絶対にGitHubへ置かないでください。
+- パスワードそのものはGitHub Pages側には保存されません。
+- Minecraftアカウント連携は現在未実装です。

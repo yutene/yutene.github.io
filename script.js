@@ -1,5 +1,21 @@
-
 (function(){
+  // Keep the same drawer design, but normalize its order everywhere.
+  // Home → Servers → Join → Rules → News → Creations → Status → Account
+  const drawerNav=document.querySelector(".drawer-nav");
+  if(drawerNav){
+    drawerNav.innerHTML=`
+      <a href="/"><span>ホーム</span><small>HOME</small></a>
+      <a href="/servers/"><span>サーバー</span><small>SERVERS</small></a>
+      <a href="/join/"><span>参加方法</span><small>JOIN</small></a>
+      <a href="/rules/"><span>ルール</span><small>RULES</small></a>
+      <a href="/news/"><span>お知らせ</span><small>NEWS</small></a>
+      <a href="/creations/"><span>制作物</span><small>CREATIONS</small></a>
+      <a href="/status/"><span>ステータス</span><small>STATUS</small></a>
+      <div class="drawer-sep"></div>
+      <a href="/account/"><span>アカウント</span><small>ACCOUNT</small></a>
+    `;
+  }
+
   const overlay=document.getElementById("menuOverlay");
   const openBtn=document.getElementById("menuOpen");
   const closeBtn=document.getElementById("menuClose");
