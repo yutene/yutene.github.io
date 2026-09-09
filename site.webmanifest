@@ -1,0 +1,9 @@
+{
+  "name": "Yutene",
+  "short_name": "Yutene",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#101712",
+  "theme_color": "#101712",
+  "icons": []
+}
