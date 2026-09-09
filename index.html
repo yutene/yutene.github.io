@@ -1,0 +1,123 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Minecraftサーバーの運営、MOD・プラグイン制作など、Yuteneの活動をまとめた公式サイトです。">
+<meta name="theme-color" content="#101712">
+<link rel="canonical" href="https://yutene.net/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yutene">
+<meta property="og:title" content="Yutene">
+<meta property="og:description" content="Minecraftサーバーの運営、MOD・プラグイン制作など、Yuteneの活動をまとめた公式サイトです。">
+<meta property="og:url" content="https://yutene.net/">
+<meta property="og:image" content="https://yutene.net/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<title>Yutene</title>
+<link rel="stylesheet" href="/style.css">
+<script>
+(function(){
+  const p=location.pathname, h=location.hash;
+  if(p.endsWith("/index.html")){
+    if(h==="#servers") return location.replace("/servers/");
+    if(h==="#news") return location.replace("/news/");
+    if(h==="#creations") return location.replace("/");
+    history.replaceState(null,"","/");
+  }
+})();
+</script>
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" href="/"><span class="brand-mark">Y</span><span>YUTENE</span></a>
+    <button class="menu-button" id="menuOpen" aria-label="メニューを開く" aria-expanded="false">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<div class="overlay" id="menuOverlay" aria-hidden="true">
+  <aside class="drawer" aria-label="メニュー">
+    <div class="drawer-head">
+      <span class="drawer-title">MENU</span>
+      <button class="close" id="menuClose" aria-label="メニューを閉じる">×</button>
+    </div>
+    <nav class="drawer-nav"></nav>
+  </aside>
+</div>
+
+<main>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="kicker">YUTENE</p>
+    <h1>Yutene</h1>
+    <p class="hero-copy">Minecraftサーバーの運営、MOD・プラグイン制作など、Yuteneの活動をまとめています。</p>
+    <div class="hero-actions">
+      <a class="btn btn-main" href="/servers/">サーバーを見る</a>
+      <a class="btn btn-sub" href="/news/">お知らせ</a>
+    </div>
+  </div>
+</section>
+
+<section class="category-section">
+  <div class="wrap">
+    <div class="category-grid">
+      <a class="category-card" href="/servers/">
+        <span class="category-icon">S</span>
+        <h2>サーバー</h2>
+        <p>Yuteneが運営しているMinecraftサーバー。</p>
+        <span class="category-link">サーバーを見る →</span>
+      </a>
+
+      <a class="category-card" href="/creations/">
+        <span class="category-icon">C</span>
+        <h2>制作物</h2>
+        <p>Yuteneが制作するMOD・Plugin。</p>
+        <span class="category-link">制作物を見る →</span>
+      </a>
+
+      <a class="category-card" href="/join/">
+        <span class="category-icon">J</span>
+        <h2>参加方法</h2>
+        <p>サーバーへの接続先と参加手順。</p>
+        <span class="category-link">参加方法を見る →</span>
+      </a>
+
+      <a class="category-card" href="/news/">
+        <span class="category-icon">N</span>
+        <h2>お知らせ</h2>
+        <p>サイト・サーバーなどの更新情報。</p>
+        <span class="category-link">お知らせを見る →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section class="section section-white">
+  <div class="wrap">
+    <p class="eyebrow">QUICK ACCESS</p>
+    <h2 class="section-title">すぐ見る</h2>
+    <div class="quick-grid">
+      <a class="quick-link" href="/status/">ステータス<small>サーバーの現在状態</small></a>
+      <a class="quick-link" href="/rules/">ルール<small>参加前に確認</small></a>
+      <a class="quick-link" href="/join/">参加方法<small>mc.yutene.net</small></a>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <strong>Yutene</strong>
+    <p>Minecraftサーバー、MOD、プラグインなどの活動をまとめたサイトです。</p>
+    <div class="footer-copy">© <span id="year"></span> Yutene</div>
+  </div>
+</footer>
+
+<script src="/script.js"></script>
+</body>
+</html>
