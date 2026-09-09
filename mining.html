@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#101712">
+<title>採掘サーバー | Yutene</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header">
+  <div class="header-inner">
+    <a class="brand" href="index.html"><span class="brand-mark">Y</span><span>YUTENE</span></a>
+    <button class="menu-button" id="menuOpen" aria-label="メニューを開く" aria-expanded="false">
+      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
+    </button>
+  </div>
+</header>
+
+<div class="overlay" id="menuOverlay" aria-hidden="true">
+  <aside class="drawer" aria-label="メニュー">
+    <div class="drawer-head">
+      <span class="drawer-title">MENU</span>
+      <button class="close" id="menuClose" aria-label="メニューを閉じる">×</button>
+    </div>
+    <nav class="drawer-nav">
+      <a href="index.html"><span>ホーム</span><small>HOME</small></a>
+      <a href="index.html#servers"><span>サーバー</span><small>SERVERS</small></a>
+      <a href="index.html#creations"><span>制作物</span><small>CREATIONS</small></a>
+      <a href="index.html#news"><span>お知らせ</span><small>NEWS</small></a>
+      <a href="rules.html"><span>ルール</span><small>RULES</small></a>
+      <div class="drawer-sep"></div>
+      <div class="drawer-disabled" aria-disabled="true"><span>アカウント</span><span class="not-ready">未実装</span></div>
+    </nav>
+  </aside>
+</div>
+
+<main>
+<section class="detail-hero">
+  <div class="wrap">
+    <a class="back-link" href="index.html#servers">← サーバー一覧へ</a>
+    <p class="kicker">MINING</p>
+    <h1>採掘サーバー</h1>
+    <p>採掘を中心に遊ぶゲーム寄りのサーバー。資源集めだけでなく、採掘そのものを楽しめる場所です。</p>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="detail-grid">
+      <article class="info-card">
+        <h2>このサーバーについて</h2>
+        <p>採掘を中心に遊ぶためのサーバーです。ゲーム性を持たせた採掘要素や、資源集め向けの仕組みを追加していく想定です。</p>
+        <p>内容や仕様は運用しながら調整することがあります。詳細が決まった項目から、このページに追記していきます。</p>
+      </article>
+
+      <aside class="side-card">
+        <h2>基本情報</h2>
+        <div class="meta-list">
+          <div class="meta-row"><span class="meta-label">参加</span><span class="meta-value">通常参加</span></div>
+          <div class="meta-row"><span class="meta-label">接続先</span><span class="meta-value">mc.yutene.net</span></div>
+          <div class="meta-row"><span class="meta-label">用途</span><span class="meta-value">採掘 / ゲーム</span></div>
+          <div class="meta-row"><span class="meta-label">バージョン</span><span class="meta-value">準備中</span></div>
+        </div>
+      </aside>
+    </div>
+
+    <div class="detail-grid">
+      <article class="info-card">
+        <h2>ルール</h2>
+        <ul class="rule-list">
+          <li>他のプレイヤーの建築物やアイテムを勝手に壊したり取ったりしない。</li>
+          <li>他のプレイヤーへの迷惑行為をしない。</li>
+          <li>サーバーに大きな負荷をかける行為は、必要に応じて制限する場合があります。</li>
+          <li>このサーバー固有のルールがある場合は、そのルールを優先します。</li>
+        </ul>
+        <a class="placeholder" href="rules.html">共通ルールを見る</a>
+      </article>
+
+      <aside class="side-card">
+        <h2>参加方法</h2>
+        <p>メインアドレス mc.yutene.net から接続できます。</p>
+        <span class="placeholder">詳細は順次追加</span>
+      </aside>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer class="footer">
+  <div class="wrap">
+    <strong>Yutene</strong>
+    <p>Minecraftサーバー、MOD、プラグインなどの活動をまとめたサイトです。</p>
+    <div class="footer-copy">© <span id="year"></span> Yutene</div>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
