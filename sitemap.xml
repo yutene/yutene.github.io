@@ -2,6 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>https://yutene.net/</loc></url>
   <url><loc>https://yutene.net/servers/</loc></url>
+  <url><loc>https://yutene.net/servers/yutene/</loc></url>
+  <url><loc>https://yutene.net/servers/mining/</loc></url>
+  <url><loc>https://yutene.net/servers/chat/</loc></url>
+  <url><loc>https://yutene.net/servers/sagyochu/</loc></url>
+  <url><loc>https://yutene.net/servers/test/</loc></url>
   <url><loc>https://yutene.net/join/</loc></url>
   <url><loc>https://yutene.net/status/</loc></url>
   <url><loc>https://yutene.net/rules/</loc></url>
