@@ -46,7 +46,7 @@
     <a class="back-link" href="/">← ホームへ</a>
     <p class="kicker">ACCOUNT</p>
     <h1>アカウント</h1>
-    <p>Yuteneアカウントを作成・管理できます。Minecraftアカウント連携はまだ使用しません。</p>
+    <p>Yuteneアカウントの登録・ログイン・Minecraft連携を管理できます。</p>
   </div>
 </section>
 
@@ -55,7 +55,7 @@
 
     <div class="account-config-warning" id="accountConfigWarning" hidden>
       <strong>Supabaseの設定がまだ入っていません。</strong>
-      <p><code>/account/account-config.js</code> にProject URLと公開キーを設定すると、登録・ログインが使えるようになります。</p>
+      <p><code>/account/account-config.js</code> にProject URLと公開キーを設定してください。</p>
     </div>
 
     <div class="account-message" id="accountMessage" aria-live="polite"></div>
@@ -148,16 +148,58 @@
         </div>
         <div class="account-detail">
           <span>Minecraftアカウント</span>
-          <strong class="account-unlinked">未連携</strong>
+          <strong id="minecraftSummary" class="account-unlinked">未連携</strong>
         </div>
       </div>
 
       <div class="account-subpanel">
         <h3>ユーザー名</h3>
-        <form id="usernameForm" class="account-inline-form">
-          <input id="profileUsernameInput" type="text" minlength="2" maxlength="20" required>
-          <button class="account-secondary" type="submit">変更</button>
+
+        <div class="setting-view" id="usernameView">
+          <strong id="usernameCurrent">—</strong>
+          <button class="account-secondary" id="usernameEditButton" type="button">変更する</button>
+        </div>
+
+        <form id="usernameForm" class="setting-edit" hidden>
+          <input id="profileUsernameInput" type="text" minlength="2" maxlength="20" autocomplete="nickname" required>
+          <div class="setting-actions">
+            <button class="account-secondary" id="usernameCancelButton" type="button">キャンセル</button>
+            <button class="account-primary compact" type="submit">変更</button>
+          </div>
         </form>
+      </div>
+
+      <div class="account-subpanel minecraft-panel">
+        <div class="subpanel-heading">
+          <div>
+            <h3>Minecraft連携</h3>
+            <p id="minecraftDescription">Minecraftアカウントはまだ連携されていません。</p>
+          </div>
+          <span class="link-status" id="minecraftStatus">未連携</span>
+        </div>
+
+        <div id="minecraftUnlinkedActions">
+          <button class="account-secondary" id="minecraftOpenLinkButton" type="button">連携する</button>
+        </div>
+
+        <div class="minecraft-link-box" id="minecraftLinkBox" hidden>
+          <p>Minecraftで <code>/link code</code> を実行し、表示された6桁コードを入力してください。</p>
+          <form id="minecraftLinkForm" class="minecraft-code-form">
+            <input id="minecraftLinkCode" type="text" inputmode="numeric" autocomplete="one-time-code"
+                   minlength="6" maxlength="6" pattern="[0-9]{6}" placeholder="000000" required>
+            <button class="account-primary compact" type="submit">連携する</button>
+          </form>
+          <button class="account-text-button" id="minecraftLinkCancelButton" type="button">キャンセル</button>
+          <small>連携コードの有効期限は5分です。</small>
+        </div>
+
+        <div id="minecraftLinkedActions" hidden>
+          <div class="minecraft-linked-name">
+            <span>連携中</span>
+            <strong id="minecraftUsername">—</strong>
+          </div>
+          <button class="account-secondary danger-soft" id="minecraftUnlinkButton" type="button">連携解除</button>
+        </div>
       </div>
     </section>
 

@@ -27,7 +27,7 @@
   min-height:58px;border:0;background:transparent;color:var(--muted);
   cursor:pointer;font-weight:900
 }
-.account-tab+ .account-tab{border-left:1px solid var(--line)}
+.account-tab+.account-tab{border-left:1px solid var(--line)}
 .account-tab.active{color:var(--ink);background:var(--soft)}
 
 .account-panel,.account-profile-head,.account-subpanel,#recoveryArea{padding:28px}
@@ -36,12 +36,12 @@
 .account-form label{display:grid;gap:7px;font-weight:800}
 .account-form label>span{font-size:.8rem}
 .account-form small{color:var(--muted);font-weight:700}
-.account-form input,.account-inline-form input{
+.account-form input,.setting-edit input,.minecraft-code-form input{
   width:100%;height:50px;padding:0 14px;border:1px solid var(--line);
   border-radius:7px;background:rgba(255,255,255,.035);color:var(--ink);
   outline:none;font:inherit
 }
-.account-form input:focus,.account-inline-form input:focus{
+.account-form input:focus,.setting-edit input:focus,.minecraft-code-form input:focus{
   border-color:var(--green);box-shadow:0 0 0 3px rgba(255,157,204,.08)
 }
 .account-primary,.account-secondary{
@@ -51,6 +51,7 @@
   min-height:52px;margin-top:4px;border-radius:7px;
   background:var(--green);color:#fff
 }
+.account-primary.compact{min-height:44px;margin:0;padding:0 18px}
 .account-secondary{
   min-height:44px;padding:0 16px;border-radius:7px;
   background:var(--soft);color:var(--ink);border:1px solid var(--line)
@@ -76,14 +77,54 @@
 .account-detail span{display:block;color:var(--muted);font-size:.72rem;font-weight:900;letter-spacing:.06em}
 .account-detail strong{display:block;margin-top:5px;overflow-wrap:anywhere}
 .account-unlinked{color:var(--muted)}
-.account-subpanel h3{margin:0 0 12px}
-.account-inline-form{display:grid;grid-template-columns:1fr auto;gap:10px}
+
+.account-subpanel{border-top:1px solid var(--line)}
+.account-subpanel:first-of-type{border-top:0}
+.account-subpanel h3{margin:0}
+.setting-view{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:14px
+}
+.setting-view strong{font-size:1.05rem}
+.setting-edit{display:grid;gap:12px;margin-top:14px}
+.setting-actions{display:flex;justify-content:flex-end;gap:10px}
+
+.subpanel-heading{
+  display:flex;align-items:flex-start;justify-content:space-between;gap:18px;margin-bottom:18px
+}
+.subpanel-heading p{margin:6px 0 0;color:var(--muted);font-size:.88rem}
+.link-status{
+  flex:0 0 auto;padding:6px 10px;border:1px solid var(--line);border-radius:999px;
+  color:var(--muted);font-size:.72rem;font-weight:900
+}
+.link-status.linked{
+  color:#8ee2ad;border-color:rgba(57,169,97,.26);background:rgba(57,169,97,.08)
+}
+.minecraft-link-box{
+  margin-top:16px;padding:18px;border:1px solid var(--line);border-radius:9px;background:var(--soft)
+}
+.minecraft-link-box p{margin:0 0 14px;line-height:1.8}
+.minecraft-link-box code{font-weight:900;color:var(--green)}
+.minecraft-link-box small{display:block;margin-top:14px;color:var(--muted);font-weight:700}
+.minecraft-code-form{display:grid;grid-template-columns:1fr auto;gap:10px}
+.minecraft-code-form input{
+  text-align:center;font-size:1.25rem;font-weight:900;letter-spacing:.18em
+}
+.minecraft-linked-name{
+  display:flex;align-items:center;gap:10px;margin-bottom:14px
+}
+.minecraft-linked-name span{color:var(--muted);font-size:.8rem;font-weight:800}
+.minecraft-linked-name strong{font-size:1.1rem}
+.danger-soft{color:#e6a8ae}
 
 #recoveryArea{margin-top:18px}
 
 @media(max-width:650px){
   .account-profile-head{align-items:flex-start;flex-direction:column}
   .account-details{grid-template-columns:1fr}
-  .account-inline-form{grid-template-columns:1fr}
-  .account-inline-form .account-secondary{width:100%}
+  .setting-view{align-items:flex-start;flex-direction:column}
+  .setting-view .account-secondary{width:100%}
+  .setting-actions{display:grid;grid-template-columns:1fr 1fr}
+  .minecraft-code-form{grid-template-columns:1fr}
+  .minecraft-code-form .account-primary{width:100%}
+  .subpanel-heading{align-items:flex-start}
 }

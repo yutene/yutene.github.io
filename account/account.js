@@ -12,7 +12,8 @@
   const loginPanel=document.getElementById("loginPanel");
   const signupPanel=document.getElementById("signupPanel");
 
-  let pendingSignupEmail="";
+  let pendingSignupEmail=sessionStorage.getItem("yutenePendingSignupEmail") || "";
+  let currentUser=null;
 
   function showMessage(text,type="info"){
     if(!message) return;
@@ -69,7 +70,86 @@
     return new Intl.DateTimeFormat("ja-JP",{year:"numeric",month:"long",day:"numeric"}).format(d);
   }
 
+  function getUsername(user){
+    return (user?.user_metadata?.username || user?.email?.split("@")[0] || "Yutene User").trim();
+  }
+
+  function setUsernameEditing(editing){
+    const view=document.getElementById("usernameView");
+    const form=document.getElementById("usernameForm");
+    if(!view || !form) return;
+    view.hidden=editing;
+    form.hidden=!editing;
+    if(editing){
+      const input=document.getElementById("profileUsernameInput");
+      input.value=getUsername(currentUser);
+      input.focus();
+      input.select();
+    }
+  }
+
+  async function loadMinecraftLink(user){
+    const summary=document.getElementById("minecraftSummary");
+    const status=document.getElementById("minecraftStatus");
+    const description=document.getElementById("minecraftDescription");
+    const unlinkedActions=document.getElementById("minecraftUnlinkedActions");
+    const linkedActions=document.getElementById("minecraftLinkedActions");
+    const linkBox=document.getElementById("minecraftLinkBox");
+    const mcName=document.getElementById("minecraftUsername");
+
+    if(!user){
+      summary.textContent="未連携";
+      summary.className="account-unlinked";
+      status.textContent="未連携";
+      description.textContent="Minecraftアカウントはまだ連携されていません。";
+      unlinkedActions.hidden=false;
+      linkedActions.hidden=true;
+      linkBox.hidden=true;
+      return;
+    }
+
+    const {data,error}=await client
+      .from("minecraft_links")
+      .select("mc_username,mc_uuid,linked_at")
+      .eq("user_id",user.id)
+      .maybeSingle();
+
+    if(error){
+      console.error("minecraft_links:",error);
+      summary.textContent="取得できません";
+      summary.className="account-unlinked";
+      status.textContent="確認失敗";
+      description.textContent="Minecraft連携情報を取得できませんでした。";
+      unlinkedActions.hidden=false;
+      linkedActions.hidden=true;
+      return;
+    }
+
+    if(data){
+      summary.textContent=data.mc_username;
+      summary.className="";
+      status.textContent="連携済み";
+      status.classList.add("linked");
+      description.textContent="Minecraftアカウントが連携されています。";
+      mcName.textContent=data.mc_username;
+      unlinkedActions.hidden=true;
+      linkedActions.hidden=false;
+      linkBox.hidden=true;
+    }else{
+      summary.textContent="未連携";
+      summary.className="account-unlinked";
+      status.textContent="未連携";
+      status.classList.remove("linked");
+      description.textContent="Minecraftアカウントはまだ連携されていません。";
+      mcName.textContent="—";
+      unlinkedActions.hidden=false;
+      linkedActions.hidden=true;
+      linkBox.hidden=true;
+    }
+  }
+
   function renderUser(user){
+    currentUser=user || null;
     verifyArea.hidden=true;
     recoveryArea.hidden=true;
 
@@ -79,13 +159,17 @@
       return;
     }
 
-    const username=(user.user_metadata?.username || user.email?.split("@")[0] || "Yutene User").trim();
+    const username=getUsername(user);
     document.getElementById("profileUsername").textContent=username;
+    document.getElementById("usernameCurrent").textContent=username;
     document.getElementById("profileUsernameInput").value=username;
     document.getElementById("profileEmail").textContent=user.email || "—";
     document.getElementById("profileCreatedAt").textContent=formatDate(user.created_at);
+    setUsernameEditing(false);
+
     authArea.hidden=true;
     profileArea.hidden=false;
+    loadMinecraftLink(user);
   }
 
   function validateUsername(value){
@@ -96,6 +180,7 @@
 
   function openVerify(email){
     pendingSignupEmail=email;
+    sessionStorage.setItem("yutenePendingSignupEmail",email);
     authArea.hidden=true;
     profileArea.hidden=true;
     recoveryArea.hidden=true;
@@ -133,7 +218,7 @@
         renderUser(data.user);
       }else{
         openVerify(email);
-        showMessage("Yuteneから確認コードを送信しました。","ok");
+        showMessage("Yuteneから6桁の確認コードを送信しました。","ok");
       }
     }catch(err){
       showMessage(err.message || "アカウントを作成できませんでした。","error");
@@ -164,6 +249,7 @@
       if(error) throw error;
 
       pendingSignupEmail="";
+      sessionStorage.removeItem("yutenePendingSignupEmail");
       renderUser(data.user);
       showMessage("メール確認が完了しました。アカウントを作成しました。","ok");
     }catch(err){
@@ -181,18 +267,18 @@
       const {error}=await client.auth.resend({
         type:"signup",
         email:pendingSignupEmail,
-        options:{
-          emailRedirectTo:`${location.origin}/account/`
-        }
+        options:{emailRedirectTo:`${location.origin}/account/`}
       });
       if(error) throw error;
-      showMessage("確認コードを再送しました。","ok");
+      showMessage("6桁の確認コードを再送しました。","ok");
     }catch(err){
       showMessage(err.message || "確認コードを再送できませんでした。","error");
     }
   });
 
   document.getElementById("backToSignupButton")?.addEventListener("click",()=>{
+    pendingSignupEmail="";
+    sessionStorage.removeItem("yutenePendingSignupEmail");
     verifyArea.hidden=true;
     authArea.hidden=false;
     switchTab("signup");
@@ -242,16 +328,85 @@
     showMessage("ログアウトしました。","ok");
   });
 
+  document.getElementById("usernameEditButton")?.addEventListener("click",()=>setUsernameEditing(true));
+  document.getElementById("usernameCancelButton")?.addEventListener("click",()=>setUsernameEditing(false));
+
   document.getElementById("usernameForm")?.addEventListener("submit",async e=>{
     e.preventDefault();
     try{
       const username=validateUsername(document.getElementById("profileUsernameInput").value);
       const {data,error}=await client.auth.updateUser({data:{username}});
       if(error) throw error;
-      renderUser(data.user);
+      currentUser=data.user;
+      const updated=getUsername(data.user);
+      document.getElementById("profileUsername").textContent=updated;
+      document.getElementById("usernameCurrent").textContent=updated;
+      setUsernameEditing(false);
       showMessage("ユーザー名を変更しました。","ok");
     }catch(err){
       showMessage(err.message || "ユーザー名を変更できませんでした。","error");
+    }
+  });
+
+  document.getElementById("minecraftOpenLinkButton")?.addEventListener("click",()=>{
+    const box=document.getElementById("minecraftLinkBox");
+    box.hidden=false;
+    document.getElementById("minecraftLinkCode").value="";
+    document.getElementById("minecraftLinkCode").focus();
+    showMessage("");
+  });
+
+  document.getElementById("minecraftLinkCancelButton")?.addEventListener("click",()=>{
+    document.getElementById("minecraftLinkBox").hidden=true;
+  });
+
+  document.getElementById("minecraftLinkForm")?.addEventListener("submit",async e=>{
+    e.preventDefault();
+    if(!currentUser){
+      showMessage("先にログインしてください。","error");
+      return;
+    }
+
+    const code=document.getElementById("minecraftLinkCode").value.trim();
+    if(!/^\d{6}$/.test(code)){
+      showMessage("Minecraftに表示された6桁コードを入力してください。","error");
+      return;
+    }
+
+    try{
+      const {data,error}=await client.rpc("claim_minecraft_link",{p_code:code});
+      if(error) throw error;
+
+      document.getElementById("minecraftLinkBox").hidden=true;
+      await loadMinecraftLink(currentUser);
+      const name=data?.mc_username ? `（${data.mc_username}）` : "";
+      showMessage(`Minecraftアカウントを連携しました${name}。`,"ok");
+    }catch(err){
+      console.error(err);
+      const msg=(err?.message || "").toLowerCase();
+      if(msg.includes("already linked")){
+        showMessage("このMinecraftアカウントは、すでに別のYuteneアカウントと連携されています。","error");
+      }else{
+        showMessage("コードが違うか、有効期限が切れています。Minecraftで /link code をもう一度実行してください。","error");
+      }
+    }
+  });
+
+  document.getElementById("minecraftUnlinkButton")?.addEventListener("click",async()=>{
+    if(!currentUser) return;
+    if(!confirm("Minecraftアカウントの連携を解除しますか？")) return;
+
+    try{
+      const {error}=await client
+        .from("minecraft_links")
+        .delete()
+        .eq("user_id",currentUser.id);
+      if(error) throw error;
+
+      await loadMinecraftLink(currentUser);
+      showMessage("Minecraftアカウントの連携を解除しました。","ok");
+    }catch(err){
+      showMessage("Minecraft連携を解除できませんでした。","error");
     }
   });
 
