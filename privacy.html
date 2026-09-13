@@ -1,0 +1,319 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Yutene Serverのプライバシーポリシーです。">
+  <title>プライバシーポリシー | Yutene Server</title>
+  <style>
+:root {
+  --bg: #fff8fc;
+  --card: rgba(255,255,255,.92);
+  --text: #2d2630;
+  --muted: #756b73;
+  --pink: #ff5fa2;
+  --pink-dark: #d94482;
+  --pink-soft: #ffe4f0;
+  --border: #f2d5e2;
+  --shadow: 0 16px 45px rgba(196, 73, 126, .10);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Sans",
+               "Yu Gothic", "Noto Sans JP", sans-serif;
+  color: var(--text);
+  background:
+    radial-gradient(circle at 0 0, #ffe8f2 0, transparent 28rem),
+    linear-gradient(180deg, #fffafd 0%, var(--bg) 100%);
+  line-height: 1.85;
+}
+a { color: var(--pink-dark); }
+a:hover { opacity: .82; }
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom: 1px solid rgba(242,213,226,.85);
+  background: rgba(255,255,255,.86);
+  backdrop-filter: blur(14px);
+}
+.nav {
+  max-width: 1000px;
+  margin: 0 auto;
+  min-height: 64px;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+.brand {
+  font-weight: 800;
+  letter-spacing: .02em;
+  color: var(--text);
+  text-decoration: none;
+}
+.nav-links {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.nav-links a {
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 999px;
+  color: var(--muted);
+}
+.nav-links a[aria-current="page"],
+.nav-links a:hover {
+  background: var(--pink-soft);
+  color: var(--pink-dark);
+}
+main {
+  max-width: 900px;
+  margin: 54px auto 80px;
+  padding: 0 20px;
+}
+.hero {
+  margin-bottom: 28px;
+}
+.eyebrow {
+  display: inline-block;
+  padding: 5px 10px;
+  border: 1px solid var(--border);
+  background: white;
+  border-radius: 999px;
+  color: var(--pink-dark);
+  font-size: .85rem;
+  font-weight: 700;
+}
+h1 {
+  margin: 14px 0 6px;
+  font-size: clamp(2rem, 7vw, 3.5rem);
+  line-height: 1.15;
+  letter-spacing: -.03em;
+}
+.updated {
+  color: var(--muted);
+  font-size: .95rem;
+}
+.card {
+  padding: clamp(22px, 5vw, 42px);
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  box-shadow: var(--shadow);
+}
+h2 {
+  margin: 2.3em 0 .7em;
+  padding-bottom: .35em;
+  font-size: 1.25rem;
+  border-bottom: 2px solid var(--pink-soft);
+}
+h2:first-child { margin-top: 0; }
+h3 {
+  margin: 1.6em 0 .5em;
+  font-size: 1.05rem;
+}
+p { margin: .65em 0 1em; }
+ul, ol { padding-left: 1.45em; }
+li { margin: .32em 0; }
+.notice {
+  margin: 22px 0;
+  padding: 16px 18px;
+  border-left: 4px solid var(--pink);
+  border-radius: 12px;
+  background: var(--pink-soft);
+}
+.contact {
+  margin-top: 28px;
+  padding: 18px;
+  border-radius: 16px;
+  background: #fff4f9;
+  border: 1px solid var(--border);
+}
+.footer {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0 20px 44px;
+  color: var(--muted);
+  font-size: .9rem;
+}
+.footer a { text-decoration: none; }
+@media (max-width: 640px) {
+  .nav { min-height: 58px; }
+  .nav-links { gap: 2px; }
+  .nav-links a { padding: 7px 9px; font-size: .9rem; }
+  main { margin-top: 36px; }
+  .card { border-radius: 20px; }
+}
+</style>
+</head>
+<body>
+<header class="header">
+  <nav class="nav" aria-label="メインナビゲーション">
+    <a class="brand" href="/">Yutene Server</a>
+    <div class="nav-links">
+      <a href="/terms.html">利用規約</a>
+      <a href="/privacy.html" aria-current="page">プライバシー</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section class="hero">
+    <span class="eyebrow">Yutene Server</span>
+    <h1>プライバシーポリシー</h1>
+    <div class="updated">最終更新日：2026年9月13日</div>
+  </section>
+
+  <article class="card">
+    <p>ゆてね（以下「運営」といいます。）は、Minecraftサーバー、Webサイト「yutene.net」およびこれらに関連するサービス（以下「本サービス」といいます。）における利用者に関する情報を、本プライバシーポリシーに従って取り扱います。</p>
+
+    <h2>第1条　取得する情報</h2>
+
+    <h3>Minecraftサーバー利用時</h3>
+    <ul>
+      <li>Minecraft ID</li>
+      <li>UUIDその他アカウントを識別するための情報</li>
+      <li>Bedrock Edition利用時の識別情報</li>
+      <li>IPアドレス</li>
+      <li>接続日時</li>
+      <li>接続しているサーバー</li>
+      <li>チャット内容</li>
+      <li>使用したコマンド</li>
+      <li>プレイ履歴</li>
+      <li>ゲーム内所持金</li>
+      <li>インベントリ等のゲームデータ</li>
+      <li>権限情報</li>
+      <li>Kick、BAN、Timeoutその他の処分履歴</li>
+      <li>不正行為・セキュリティ対策・障害調査に必要な各種ログ</li>
+    </ul>
+
+    <h3>Webサイト利用時</h3>
+    <ul>
+      <li>アクセス日時</li>
+      <li>閲覧したページ</li>
+      <li>参照元</li>
+      <li>ブラウザ・OS等の端末に関する情報</li>
+      <li>Webサイトの表示・パフォーマンスに関する情報</li>
+      <li>その他アクセス解析サービスによって統計的に処理される情報</li>
+    </ul>
+
+    <h3>申請・問い合わせ時</h3>
+    <ul>
+      <li>Minecraft ID</li>
+      <li>利用者が入力した名前またはニックネーム</li>
+      <li>連絡先</li>
+      <li>申請内容</li>
+      <li>問い合わせ内容</li>
+      <li>その他利用者が任意に送信した情報</li>
+    </ul>
+
+    <p>運営は、本サービスの利用に必要のない本名、住所、電話番号等の情報を、不必要に利用者へ要求しないよう努めます。</p>
+
+    <h2>第2条　利用目的</h2>
+    <ol>
+      <li>本サービスを提供・維持するため</li>
+      <li>Minecraftサーバーへの接続および利用者識別のため</li>
+      <li>Whitelistその他のアクセス管理を行うため</li>
+      <li>プレイヤーデータを保存するため</li>
+      <li>ゲーム内経済、権限その他の機能を提供するため</li>
+      <li>不正行為、荒らし、チートその他の規約違反を検出・調査するため</li>
+      <li>Kick、BAN、Timeoutその他の管理措置を実施するため</li>
+      <li>利用者同士のトラブルを調査するため</li>
+      <li>サーバーおよびWebサイトへの攻撃、不正アクセス等を防止するため</li>
+      <li>障害、不具合等を調査するため</li>
+      <li>バックアップおよびデータ復旧を行うため</li>
+      <li>利用状況を把握し、本サービスを改善するため</li>
+      <li>利用者からの問い合わせへ回答するため</li>
+      <li>重要なお知らせを行うため</li>
+      <li>法令上必要な対応を行うため</li>
+    </ol>
+
+    <h2>第3条　サーバーログの保存</h2>
+    <p>本サービスでは、安全管理、不正行為への対応、トラブル解決、障害調査、処分履歴の確認等を目的として、以下の情報をサーバーログとして保存する場合があります。</p>
+    <ul>
+      <li>接続・切断記録</li>
+      <li>IPアドレス</li>
+      <li>Minecraft ID・UUID</li>
+      <li>チャット</li>
+      <li>コマンド</li>
+      <li>サーバー移動</li>
+      <li>処分履歴</li>
+      <li>ゲーム内操作に関する記録</li>
+      <li>その他運営・セキュリティ上必要な記録</li>
+    </ul>
+    <p><strong>これらのサーバーログは、原則として保存期間を定めず保存する場合があります。</strong></p>
+    <p>ただし、運営上不要となった情報は削除・整理する場合があります。</p>
+
+    <h2>第4条　バックアップ</h2>
+    <p>運営は、データ消失や障害に備えるため、本サービスのデータをバックアップする場合があります。削除済みの情報がバックアップ内に残る場合があります。</p>
+
+    <h2>第5条　第三者への提供</h2>
+    <p>運営は、次の場合を除き、取得した個人情報を第三者へ提供しません。</p>
+    <ol>
+      <li>本人の同意がある場合</li>
+      <li>法令に基づく場合</li>
+      <li>人の生命、身体または財産の保護のために必要な場合</li>
+      <li>不正アクセスその他重大な違法行為への対応として必要な場合</li>
+      <li>本サービスの提供に必要な範囲で業務委託先へ取り扱いを委託する場合</li>
+      <li>その他法令で認められている場合</li>
+    </ol>
+
+    <h2>第6条　外部サービス</h2>
+    <p>本サービスでは、サーバーへの接続、インフラ、セキュリティ、アクセス解析その他の機能を提供するため、第三者のサービスを利用する場合があります。</p>
+    <ul>
+      <li>Microsoft / Mojangが提供するMinecraft関連サービス</li>
+      <li>Playit等のネットワーク中継サービス</li>
+      <li>Webサーバー、DNS、ドメイン関連サービス</li>
+      <li>Cloudflare Web Analytics</li>
+      <li>その他本サービスの提供に必要なインフラサービス</li>
+    </ul>
+    <p>各外部サービスが独自に取得・処理する情報については、それぞれのサービス提供者のプライバシーポリシー等が適用されます。</p>
+
+    <h2>第7条　アクセス解析</h2>
+    <p>本サイトでは、サイトの利用状況およびパフォーマンスを把握し、サービスを改善するため、Cloudflare Web Analyticsを使用する予定です。</p>
+    <p>ページの閲覧状況、参照元、使用端末、ブラウザ、パフォーマンス情報等の統計情報が処理される場合があります。</p>
+    <p>取得した統計情報は、本サイトの利用状況の把握、表示速度の改善、コンテンツの改善その他本サービスの運営改善のために利用します。</p>
+
+    <h2>第8条　Cookie等</h2>
+    <p>本サイトでは、サイトの動作、設定保存、セキュリティ等に必要なCookieその他の技術を使用する場合があります。</p>
+    <p>新たに広告サービス、追加のアクセス解析サービスその他利用者情報を外部へ送信するサービスを導入する場合は、必要に応じて本ポリシーまたはサイト上でその内容を明示します。</p>
+
+    <h2>第9条　情報の安全管理</h2>
+    <p>運営は、取得した情報について、不正アクセス、漏えい、紛失、改ざん等を防止するため、必要かつ合理的な安全管理措置を講じます。</p>
+    <ul>
+      <li>管理情報へのアクセス権限の制限</li>
+      <li>管理アカウントの認証</li>
+      <li>サーバーおよびソフトウェアの更新</li>
+      <li>不正アクセス対策</li>
+      <li>バックアップ</li>
+    </ul>
+
+    <h2>第10条　情報の開示・訂正・削除等</h2>
+    <p>利用者は、法令に基づき、自身に関する情報について開示、訂正、利用停止、削除等を請求できる場合があります。希望する場合は、下記のお問い合わせ先からご連絡ください。</p>
+    <p>本人確認が必要となる場合があります。また、法令、セキュリティ、BAN回避防止その他正当な理由により、一部の情報を削除できない場合があります。</p>
+
+    <h2>第11条　未成年者の情報</h2>
+    <p>未成年者が個人情報等を送信する場合は、必要に応じて保護者その他の法定代理人の同意を得てください。運営は、サービス提供上必要のない詳細な個人情報を未成年者から積極的に収集しないよう努めます。</p>
+
+    <h2>第12条　本ポリシーの変更</h2>
+    <p>運営は、サービス内容、使用するシステム、法令等の変更に応じて、本プライバシーポリシーを変更する場合があります。重要な変更については、本サイトその他適切な方法で告知します。</p>
+
+    <h2>第13条　お問い合わせ</h2>
+    <div class="contact">
+      <strong>運営者：</strong>ゆてね<br>
+      <strong>Webサイト：</strong><a href="https://yutene.net/">https://yutene.net</a><br>
+      <strong>お問い合わせ：</strong><a href="mailto:support@yutene.net">support@yutene.net</a>
+    </div>
+  </article>
+</main>
+
+<footer class="footer">
+  © Yutene Server ・ <a href="/terms.html">利用規約</a> ・ <a href="/privacy.html">プライバシーポリシー</a>
+</footer>
+</body>
+</html>
