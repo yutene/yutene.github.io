@@ -34,19 +34,7 @@
       <span class="drawer-title">MENU</span>
       <button class="close" id="menuClose" aria-label="メニューを閉じる">×</button>
     </div>
-    <nav class="drawer-nav">
-      <a href="/"><span>ホーム</span><small>HOME</small></a>
-      <a href="/servers/"><span>サーバー</span><small>SERVERS</small></a>
-      <a href="/join/"><span>参加方法</span><small>JOIN</small></a>
-      <a href="/status/"><span>ステータス</span><small>STATUS</small></a>
-      <a href="/rules/"><span>ルール</span><small>RULES</small></a>
-      <a href="/news/"><span>お知らせ</span><small>NEWS</small></a>
-      <div class="drawer-sep"></div>
-      <a href="/creations/"><span>制作物</span><small>CREATIONS</small></a>
-      <div class="drawer-disabled" aria-disabled="true">
-        <span>アカウント</span><span class="not-ready">未実装</span>
-      </div>
-    </nav>
+    <nav class="drawer-nav"></nav>
   </aside>
 </div>
 
@@ -56,7 +44,7 @@
     <a class="back-link" href="/">← ホームへ</a>
     <p class="kicker">RULES</p>
     <h1>ルール</h1>
-    <p>Yutene全体に適用されるルールと、各Minecraftサーバーの固有ルールを掲載しています。</p>
+    <p>Yutene全体に適用されるルールと、各Minecraftサーバーの固有ルールです。</p>
   </div>
 </section>
 
@@ -93,13 +81,13 @@
         <ul class="rule-list">
           <li>BANやその他の制限を別アカウント等で意図的に回避する行為を禁止します。</li>
           <li>重大な不具合や運営上の問題を発見した場合、それを悪用して被害を拡大させる行為を禁止します。</li>
-          <li>違反への対応内容・期間は固定表ではなく、違反内容、悪質性、被害、過去の状況などを踏まえて運営が決定します。</li>
+          <li>違反への対応内容・期間は、違反内容、悪質性、被害、過去の状況などを踏まえて運営が決定します。</li>
         </ul>
       </div>
 
       <div class="info-card">
         <h2>サーバー固有ルール</h2>
-        <p>各Minecraftサーバーでは、全体ルールに加えて下記の固有ルールが適用されます。サーバーごとの自由度や禁止事項はそれぞれ異なります。</p>
+        <p>各Minecraftサーバーでは、全体ルールに加えて下記の固有ルールが適用されます。</p>
       </div>
     </div>
   </div>
@@ -115,13 +103,13 @@
       <a class="server-card" href="/rules/yutene/">
         <span class="tag">MAIN</span>
         <h3>Yutene Server</h3>
-        <p>Towny・経済・Jobs・MCMMOを中心としたメインサーバー。</p>
+        <p>生活・経済を中心に遊ぶメインサーバー。</p>
         <span class="card-note">ルールを見る →</span>
       </a>
-      <a class="server-card" href="/rules/mining/">
-        <span class="tag">MINING</span>
-        <h3>採掘サーバー</h3>
-        <p>採掘・強化・進行を中心にしたゲーム型サーバー。</p>
+      <a class="server-card" href="/rules/casino/">
+        <span class="tag">CASINO</span>
+        <h3>Casino</h3>
+        <p>Yutene Serverと同じ経済残高を使うカジノサーバー。</p>
         <span class="card-note">ルールを見る →</span>
       </a>
       <a class="server-card" href="/rules/chat/">
@@ -133,19 +121,18 @@
       <a class="server-card" href="/rules/sagyochu/">
         <span class="tag">PRIVATE</span>
         <h3>sagyochu</h3>
-        <p>チート以外は基本自由な高自由度サバイバル。</p>
+        <p>承認制の作業・サバイバルサーバー。</p>
         <span class="card-note">ルールを見る →</span>
       </a>
       <a class="server-card" href="/rules/test/">
         <span class="tag">TEST</span>
         <h3>test</h3>
-        <p>検証用。ゲーム内の操作は原則なんでもOK。</p>
+        <p>検証用。ゲーム内の操作は原則自由。</p>
         <span class="card-note">ルールを見る →</span>
       </a>
     </div>
   </div>
 </section>
-
 </main>
 
 <footer class="footer">
@@ -156,6 +143,5 @@
   </div>
 </footer>
 <script src="/script.js"></script>
-
 </body>
 </html>

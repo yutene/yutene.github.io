@@ -3,467 +3,37 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Yutene Server 公式サイト。サーバー情報、参加方法、お知らせなどを掲載しています。">
-<meta name="theme-color" content="#0f1712">
-<title>Yutene Server</title>
-<style>
-:root{
-  --bg:#f4f6f3;
-  --paper:#ffffff;
-  --ink:#152019;
-  --muted:#68736b;
-  --line:#dce4de;
-  --green:#3cab67;
-  --green-dark:#247d49;
-  --dark:#0f1712;
-  --dark-2:#17231a;
-  --soft:#eaf4ed;
-  --radius:22px;
-  --shadow:0 18px 50px rgba(18,37,24,.10);
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{
-  margin:0;
-  color:var(--ink);
-  background:var(--bg);
-  font-family:Inter,"Noto Sans JP","Hiragino Sans","Yu Gothic UI",system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-  line-height:1.75;
-}
-body.menu-open{overflow:hidden}
-a{color:inherit;text-decoration:none}
-button{font:inherit}
-.wrap{width:min(1120px,calc(100% - 34px));margin-inline:auto}
-
-/* header */
-.header{
-  position:fixed;
-  z-index:50;
-  top:0;left:0;right:0;
-  height:72px;
-  display:flex;
-  align-items:center;
-  background:rgba(12,20,15,.78);
-  backdrop-filter:blur(18px);
-  border-bottom:1px solid rgba(255,255,255,.09);
-  color:#fff;
-}
-.header-inner{
-  width:min(1180px,calc(100% - 30px));
-  margin:auto;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-}
-.brand{
-  display:flex;
-  align-items:center;
-  gap:11px;
-  font-weight:900;
-  letter-spacing:.055em;
-}
-.brand-mark{
-  width:37px;height:37px;
-  display:grid;place-items:center;
-  border-radius:10px;
-  background:var(--green);
-  color:#fff;
-  font-size:1.05rem;
-  box-shadow:0 8px 24px rgba(60,171,103,.26);
-}
-.brand-sub{
-  display:block;
-  color:rgba(255,255,255,.55);
-  font-size:.64rem;
-  letter-spacing:.12em;
-  font-weight:700;
-  line-height:1;
-  margin-top:2px;
-}
-.menu-button{
-  width:48px;height:48px;
-  display:grid;place-items:center;
-  border:0;border-radius:14px;
-  background:rgba(255,255,255,.08);
-  cursor:pointer;color:#fff;
-}
-.menu-button:hover{background:rgba(255,255,255,.13)}
-.hamburger{width:22px;height:15px;position:relative}
-.hamburger span{
-  position:absolute;left:0;width:22px;height:2px;
-  border-radius:99px;background:#fff;
-}
-.hamburger span:nth-child(1){top:0}
-.hamburger span:nth-child(2){top:6.5px}
-.hamburger span:nth-child(3){bottom:0}
-
-/* drawer */
-.overlay{
-  position:fixed;inset:0;
-  z-index:70;
-  background:rgba(4,9,6,.58);
-  opacity:0;visibility:hidden;
-  transition:.25s ease;
-}
-.overlay.show{opacity:1;visibility:visible}
-.drawer{
-  position:absolute;
-  right:0;top:0;bottom:0;
-  width:min(390px,88vw);
-  padding:25px 22px 30px;
-  background:#fff;
-  transform:translateX(100%);
-  transition:transform .28s cubic-bezier(.22,.7,.2,1);
-  box-shadow:-24px 0 70px rgba(0,0,0,.22);
-  overflow:auto;
-}
-.overlay.show .drawer{transform:translateX(0)}
-.drawer-head{
-  display:flex;align-items:center;justify-content:space-between;
-  padding-bottom:18px;border-bottom:1px solid var(--line)
-}
-.drawer-title{font-size:.78rem;font-weight:900;letter-spacing:.15em;color:var(--muted)}
-.close{
-  width:42px;height:42px;border:0;border-radius:12px;
-  background:#f0f3f1;font-size:1.35rem;cursor:pointer;color:var(--ink)
-}
-.drawer-nav{padding:16px 0}
-.drawer-nav a,.drawer-disabled{
-  min-height:56px;padding:0 12px;
-  display:flex;align-items:center;justify-content:space-between;
-  border-radius:12px;
-  font-weight:800;
-}
-.drawer-nav a:hover{background:#f1f5f2}
-.drawer-nav small{font-size:.72rem;color:var(--muted);font-weight:800}
-.drawer-sep{height:1px;background:var(--line);margin:12px 0}
-.drawer-disabled{color:#a0a9a2;cursor:not-allowed;background:#f7f8f7}
-.not-ready{
-  padding:4px 9px;border-radius:999px;
-  background:#ecefed;color:#7d8780;
-  font-size:.67rem;font-weight:900;letter-spacing:.03em
-}
-
-/* hero */
-.hero{
-  min-height:720px;
-  display:flex;
-  align-items:center;
-  position:relative;
-  overflow:hidden;
-  color:#fff;
-  background:
-    linear-gradient(90deg,rgba(7,14,9,.92) 0%,rgba(8,17,11,.80) 44%,rgba(8,18,11,.46) 100%),
-    radial-gradient(circle at 82% 35%,rgba(60,171,103,.45),transparent 26rem),
-    linear-gradient(135deg,#16281c,#0b120d 70%);
-}
-.hero::before{
-  content:"";
-  position:absolute;inset:0;
-  opacity:.16;
-  background-image:
-    linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),
-    linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);
-  background-size:44px 44px;
-  mask-image:linear-gradient(to left,#000,transparent 70%);
-}
-.hero::after{
-  content:"";
-  position:absolute;
-  width:380px;height:380px;
-  right:8%;bottom:-160px;
-  border:58px solid rgba(60,171,103,.16);
-  transform:rotate(23deg);
-}
-.hero-inner{
-  position:relative;z-index:2;
-  padding-top:90px;
-}
-.kicker{
-  margin:0 0 12px;
-  color:#86d7a3;
-  font-size:.78rem;font-weight:900;letter-spacing:.17em
-}
-.hero h1{
-  margin:0;
-  max-width:800px;
-  font-size:clamp(3.1rem,8vw,6.8rem);
-  line-height:.98;
-  letter-spacing:-.065em;
-}
-.hero-copy{
-  margin:25px 0 0;
-  max-width:650px;
-  color:rgba(255,255,255,.76);
-  font-size:clamp(1rem,2vw,1.14rem);
-}
-.hero-actions{
-  display:flex;flex-wrap:wrap;gap:11px;
-  margin-top:32px
-}
-.btn{
-  min-height:52px;
-  padding:0 20px;
-  display:inline-flex;align-items:center;justify-content:center;
-  border-radius:14px;
-  border:1px solid rgba(255,255,255,.14);
-  font-weight:900;
-}
-.btn-main{background:var(--green);border-color:var(--green);color:#fff}
-.btn-sub{background:rgba(255,255,255,.08);color:#fff}
-.server-box{
-  margin-top:34px;
-  width:min(530px,100%);
-  padding:14px 14px 14px 18px;
-  display:flex;align-items:center;gap:14px;
-  background:rgba(255,255,255,.10);
-  border:1px solid rgba(255,255,255,.14);
-  border-radius:16px;
-  backdrop-filter:blur(10px)
-}
-.server-box-label{font-size:.69rem;color:rgba(255,255,255,.55);font-weight:900;letter-spacing:.12em}
-.server-address{display:block;font-size:1.05rem;font-weight:900;letter-spacing:.015em}
-.copy-btn{
-  margin-left:auto;
-  height:44px;padding:0 15px;
-  border:0;border-radius:11px;
-  background:#fff;color:var(--dark);
-  font-size:.74rem;font-weight:900;cursor:pointer
-}
-.copy-note{position:absolute;left:-9999px}
-
-/* notice */
-.notice{
-  position:relative;z-index:5;
-  margin-top:-34px;
-}
-.notice-card{
-  min-height:68px;
-  padding:16px 20px;
-  display:flex;align-items:center;gap:16px;
-  border-radius:18px;
-  background:#fff;
-  border:1px solid var(--line);
-  box-shadow:var(--shadow)
-}
-.notice-label{
-  flex:none;
-  padding:5px 9px;border-radius:999px;
-  background:var(--soft);color:var(--green-dark);
-  font-size:.69rem;font-weight:900
-}
-.notice-text{font-size:.9rem;color:var(--muted)}
-.notice-text strong{color:var(--ink)}
-
-/* common sections */
-.section{padding:92px 0}
-.section-white{background:#fff}
-.section-dark{background:var(--dark);color:#fff}
-.eyebrow{
-  margin:0 0 11px;
-  color:var(--green-dark);
-  font-size:.74rem;font-weight:900;letter-spacing:.16em
-}
-.section-dark .eyebrow{color:#7bd29a}
-.section-title{
-  margin:0;
-  font-size:clamp(2rem,5vw,3.6rem);
-  line-height:1.15;
-  letter-spacing:-.045em
-}
-.section-lead{
-  max-width:720px;
-  margin:17px 0 0;
-  color:var(--muted)
-}
-.section-dark .section-lead{color:rgba(255,255,255,.62)}
-
-/* about */
-.about-grid{
-  margin-top:40px;
-  display:grid;
-  grid-template-columns:1.05fr .95fr;
-  gap:18px
-}
-.about-copy{
-  padding:32px;
-  border-radius:var(--radius);
-  background:#fff;
-  border:1px solid var(--line)
-}
-.about-copy p{margin:0;color:var(--muted)}
-.about-copy p+p{margin-top:16px}
-.about-visual{
-  min-height:340px;
-  position:relative;
-  border-radius:var(--radius);
-  overflow:hidden;
-  background:
-    radial-gradient(circle at 72% 30%,rgba(86,206,128,.55),transparent 12rem),
-    linear-gradient(135deg,#173d26,#0d1f14);
-}
-.about-visual::before,.about-visual::after{
-  content:"";
-  position:absolute;
-  border-radius:8px;
-  background:rgba(255,255,255,.12);
-  box-shadow:0 0 0 1px rgba(255,255,255,.05) inset
-}
-.about-visual::before{
-  width:190px;height:190px;right:42px;top:42px;transform:rotate(14deg)
-}
-.about-visual::after{
-  width:120px;height:120px;left:45px;bottom:38px;transform:rotate(-8deg)
-}
-.visual-label{
-  position:absolute;z-index:2;left:30px;top:28px;
-  color:#fff;font-size:.75rem;font-weight:900;letter-spacing:.14em
-}
-
-/* servers */
-.server-grid{
-  margin-top:42px;
-  display:grid;
-  grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:16px
-}
-.server-card{
-  min-height:320px;
-  padding:25px;
-  display:flex;flex-direction:column;
-  border-radius:22px;
-  background:#17231a;
-  border:1px solid rgba(255,255,255,.08)
-}
-.server-card.public-main{background:linear-gradient(150deg,#214c30,#13261a)}
-.server-tag{
-  width:fit-content;
-  padding:5px 9px;border-radius:999px;
-  background:rgba(255,255,255,.08);
-  color:#9be1b2;
-  font-size:.68rem;font-weight:900;letter-spacing:.08em
-}
-.server-card h3{margin:24px 0 10px;font-size:1.55rem}
-.server-card p{margin:0;color:rgba(255,255,255,.58)}
-.server-meta{
-  margin-top:auto;padding-top:24px;
-  color:rgba(255,255,255,.44);
-  font-size:.8rem;font-weight:800
-}
-.private-row{
-  margin-top:16px;
-  padding:19px 22px;
-  display:flex;align-items:center;justify-content:space-between;gap:18px;
-  border:1px dashed rgba(255,255,255,.18);
-  border-radius:18px;color:rgba(255,255,255,.7)
-}
-.private-row strong{color:#fff}
-
-/* join */
-.join-grid{
-  margin-top:40px;
-  display:grid;
-  grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:16px
-}
-.join-card{
-  padding:28px;
-  border-radius:22px;
-  background:#fff;
-  border:1px solid var(--line)
-}
-.join-card h3{margin:0 0 18px;font-size:1.35rem}
-.steps{display:grid;gap:16px}
-.step{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start}
-.step-num{
-  width:34px;height:34px;display:grid;place-items:center;
-  border-radius:10px;background:var(--soft);color:var(--green-dark);
-  font-size:.8rem;font-weight:900
-}
-.step strong{display:block;margin-bottom:2px}
-.step p{margin:0;color:var(--muted);font-size:.9rem}
-.pending{
-  display:inline-flex;margin-top:18px;padding:7px 10px;border-radius:10px;
-  background:#f1f3f1;color:#7c867f;font-size:.78rem;font-weight:900
-}
-
-/* news */
-.news-list{margin-top:40px;border-top:1px solid var(--line)}
-.news-item{
-  padding:22px 2px;
-  display:grid;grid-template-columns:130px 1fr auto;
-  align-items:center;gap:20px;
-  border-bottom:1px solid var(--line)
-}
-.news-date{color:var(--muted);font-size:.83rem;font-weight:800}
-.news-title{font-weight:850}
-.news-tag{font-size:.7rem;font-weight:900;color:var(--green-dark);background:var(--soft);padding:5px 8px;border-radius:999px}
-
-/* utility placeholders */
-.utility-grid{
-  margin-top:38px;
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px
-}
-.utility-card{
-  min-height:170px;padding:25px;border-radius:20px;background:#fff;border:1px solid var(--line)
-}
-.utility-card h3{margin:0 0 8px}
-.utility-card p{margin:0;color:var(--muted)}
-.utility-card .state{display:inline-block;margin-top:20px;font-size:.74rem;font-weight:900;color:#7d8780;background:#eef1ef;padding:6px 9px;border-radius:999px}
-
-/* footer */
-.footer{
-  padding:38px 0 42px;
-  background:#0a100c;color:rgba(255,255,255,.52)
-}
-.footer-top{
-  display:flex;justify-content:space-between;gap:25px;align-items:flex-end
-}
-.footer strong{display:block;color:#fff;font-size:1rem;margin-bottom:4px}
-.footer p{margin:0;max-width:760px;font-size:.8rem}
-.footer-copy{margin-top:25px;padding-top:20px;border-top:1px solid rgba(255,255,255,.08);font-size:.75rem}
-.footer-copy a{color:rgba(255,255,255,.78);text-decoration:none}
-.footer-copy a:hover{text-decoration:underline;color:#fff}
-
-/* responsive */
-@media(max-width:850px){
-  .hero{min-height:660px}
-  .about-grid,.server-grid,.join-grid,.utility-grid{grid-template-columns:1fr}
-  .about-visual{min-height:270px}
-  .server-card{min-height:250px}
-}
-@media(max-width:600px){
-  .header{height:64px}
-  .brand-sub{display:none}
-  .hero{min-height:650px}
-  .hero-inner{padding-top:76px}
-  .hero h1{font-size:clamp(3.05rem,16vw,4.8rem)}
-  .hero-copy{font-size:.96rem}
-  .hero-actions{display:grid;grid-template-columns:1fr 1fr}
-  .btn{padding:0 12px;font-size:.88rem}
-  .server-box{padding:12px 12px 12px 14px}
-  .server-address{font-size:.96rem}
-  .notice{margin-top:-25px}
-  .notice-card{align-items:flex-start}
-  .section{padding:70px 0}
-  .about-copy,.join-card{padding:22px}
-  .private-row{align-items:flex-start;flex-direction:column}
-  .news-item{grid-template-columns:1fr auto;gap:5px 12px}
-  .news-date{grid-column:1}
-  .news-title{grid-column:1 / -1}
-  .news-tag{grid-column:2;grid-row:1}
-  .footer-top{align-items:flex-start;flex-direction:column}
-}
-</style>
+<meta name="description" content="Minecraftサーバーの運営、MOD・プラグイン制作など、Yuteneの活動をまとめた公式サイトです。">
+<meta name="theme-color" content="#101712">
+<link rel="canonical" href="https://yutene.net/">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="manifest" href="/site.webmanifest">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Yutene">
+<meta property="og:title" content="Yutene">
+<meta property="og:description" content="Minecraftサーバーの運営、MOD・プラグイン制作など、Yuteneの活動をまとめた公式サイトです。">
+<meta property="og:url" content="https://yutene.net/">
+<meta property="og:image" content="https://yutene.net/og.png">
+<meta name="twitter:card" content="summary_large_image">
+<title>Yutene</title>
+<link rel="stylesheet" href="/style.css">
+<script>
+(function(){
+  const p=location.pathname, h=location.hash;
+  if(p.endsWith("/index.html")){
+    if(h==="#servers") return location.replace("/servers/");
+    if(h==="#news") return location.replace("/news/");
+    if(h==="#creations") return location.replace("/");
+    history.replaceState(null,"","/");
+  }
+})();
+</script>
 </head>
 <body>
 
 <header class="header">
   <div class="header-inner">
-    <a class="brand" href="#home">
-      <span class="brand-mark">Y</span>
-      <span>YUTENE<span class="brand-sub">SERVER</span></span>
-    </a>
+    <a class="brand" href="/"><span class="brand-mark">Y</span><span>YUTENE</span></a>
     <button class="menu-button" id="menuOpen" aria-label="メニューを開く" aria-expanded="false">
       <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
     </button>
@@ -476,229 +46,82 @@ button{font:inherit}
       <span class="drawer-title">MENU</span>
       <button class="close" id="menuClose" aria-label="メニューを閉じる">×</button>
     </div>
-    <nav class="drawer-nav">
-      <a href="#home"><span>ホーム</span><small>HOME</small></a>
-      <a href="#about"><span>Yutene Serverとは？</span><small>ABOUT</small></a>
-      <a href="#servers"><span>サーバー</span><small>SERVERS</small></a>
-      <a href="#join"><span>参加方法</span><small>JOIN</small></a>
-      <a href="#news"><span>お知らせ</span><small>NEWS</small></a>
-      <a href="#status"><span>ステータス</span><small>STATUS</small></a>
-      <a href="#rules"><span>ルール</span><small>RULES</small></a>
-      <div class="drawer-sep"></div>
-      <div class="drawer-disabled" aria-disabled="true">
-        <span>アカウント</span><span class="not-ready">未実装</span>
-      </div>
-    </nav>
+    <nav class="drawer-nav"></nav>
   </aside>
 </div>
 
 <main>
-  <section class="hero" id="home">
-    <div class="wrap hero-inner">
-      <p class="kicker">YUTENE SERVER</p>
-      <h1>Yutene<br>Server</h1>
-      <p class="hero-copy">Minecraftをみんなで遊ぶためのマルチプレイサーバー。メインサーバーのほか、採掘・建築など用途の違うサーバーを運用しています。</p>
-      <div class="hero-actions">
-        <a class="btn btn-main" href="#join">参加方法を見る</a>
-        <a class="btn btn-sub" href="#servers">サーバーを見る</a>
-      </div>
-      <div class="server-box">
-        <div>
-          <span class="server-box-label">SERVER ADDRESS</span>
-          <span class="server-address">mc.yutene.net</span>
-        </div>
-        <button class="copy-btn" id="copyAddress">COPY</button>
-        <span class="copy-note" id="copyResult" aria-live="polite"></span>
-      </div>
-    </div>
-  </section>
-
-  <div class="notice">
-    <div class="wrap">
-      <div class="notice-card">
-        <span class="notice-label">INFO</span>
-        <div class="notice-text"><strong>サイトを順次整備しています。</strong> サーバー情報や各ページは今後追加予定です。</div>
-      </div>
+<section class="hero">
+  <div class="wrap hero-inner">
+    <p class="kicker">YUTENE</p>
+    <h1>Yutene</h1>
+    <p class="hero-copy">Minecraftサーバーの運営、MOD・プラグイン制作など、Yuteneの活動をまとめています。</p>
+    <div class="hero-actions">
+      <a class="btn btn-main" href="/servers/">サーバーを見る</a>
+      <a class="btn btn-sub" href="/news/">お知らせ</a>
     </div>
   </div>
+</section>
 
-  <section class="section" id="about">
-    <div class="wrap">
-      <p class="eyebrow">ABOUT</p>
-      <h2 class="section-title">Yutene Serverとは？</h2>
-      <p class="section-lead">遊ぶ場所をひとつにまとめるのではなく、目的ごとにサーバーを分けて、それぞれの遊び方を楽しめるようにしています。</p>
+<section class="category-section">
+  <div class="wrap">
+    <div class="category-grid">
+      <a class="category-card" href="/servers/">
+        <span class="category-icon">S</span>
+        <h2>サーバー</h2>
+        <p>Yuteneが運営しているMinecraftサーバー。</p>
+        <span class="category-link">サーバーを見る →</span>
+      </a>
 
-      <div class="about-grid">
-        <div class="about-copy">
-          <p>メインのYutene Serverでは、サバイバルや街づくりを中心に遊べます。採掘サーバーや建築サーバーは、それぞれ特化した遊び方ができるように分けています。</p>
-          <p>sagyochu / test は運営・作業・検証向けのサーバーで、参加できるユーザーを制限しています。</p>
-        </div>
-        <div class="about-visual" aria-hidden="true">
-          <span class="visual-label">MULTI SERVER NETWORK</span>
-        </div>
-      </div>
+      <a class="category-card" href="/creations/">
+        <span class="category-icon">C</span>
+        <h2>制作物</h2>
+        <p>Yuteneが制作するMOD・Plugin。</p>
+        <span class="category-link">制作物を見る →</span>
+      </a>
+
+      <a class="category-card" href="/join/">
+        <span class="category-icon">J</span>
+        <h2>参加方法</h2>
+        <p>サーバーへの接続先と参加手順。</p>
+        <span class="category-link">参加方法を見る →</span>
+      </a>
+
+      <a class="category-card" href="/news/">
+        <span class="category-icon">N</span>
+        <h2>お知らせ</h2>
+        <p>サイト・サーバーなどの更新情報。</p>
+        <span class="category-link">お知らせを見る →</span>
+      </a>
     </div>
-  </section>
+  </div>
+</section>
 
-  <section class="section section-dark" id="servers">
-    <div class="wrap">
-      <p class="eyebrow">SERVERS</p>
-      <h2 class="section-title">サーバー</h2>
-      <p class="section-lead">通常参加できるサーバーと、承認制の作業・検証サーバーがあります。</p>
-
-      <div class="server-grid">
-        <article class="server-card public-main">
-          <span class="server-tag">MAIN</span>
-          <h3>Yutene Server</h3>
-          <p>サバイバルと街づくりを中心に遊ぶメインサーバー。</p>
-          <div class="server-meta">SURVIVAL / TOWN</div>
-        </article>
-        <article class="server-card">
-          <span class="server-tag">MINING</span>
-          <h3>採掘サーバー</h3>
-          <p>採掘を中心に遊べる、ゲーム寄りのサーバー。</p>
-          <div class="server-meta">MINING</div>
-        </article>
-        <article class="server-card">
-          <span class="server-tag">BUILD</span>
-          <h3>建築サーバー</h3>
-          <p>建築や共同制作に使うためのサーバー。</p>
-          <div class="server-meta">BUILD</div>
-        </article>
-      </div>
-
-      <div class="private-row">
-        <div><strong>sagyochu / test</strong><br><span>作業・検証向けの承認制サーバー</span></div>
-        <span class="not-ready">参加制限あり</span>
-      </div>
+<section class="section section-white">
+  <div class="wrap">
+    <p class="eyebrow">QUICK ACCESS</p>
+    <h2 class="section-title">すぐ見る</h2>
+    <div class="quick-grid">
+      <a class="quick-link" href="/status/">ステータス<small>サーバーの現在状態</small></a>
+      <a class="quick-link" href="/rules/">ルール<small>確定済みの全体・サーバー別ルール</small></a>
+      <a class="quick-link" href="/join/">参加方法<small>mc.yutene.net</small></a>
     </div>
-  </section>
-
-  <section class="section section-white" id="join">
-    <div class="wrap">
-      <p class="eyebrow">HOW TO JOIN</p>
-      <h2 class="section-title">参加方法</h2>
-      <p class="section-lead">Java版はサーバーアドレスを追加するだけで参加できます。</p>
-
-      <div class="join-grid">
-        <article class="join-card">
-          <h3>Java版</h3>
-          <div class="steps">
-            <div class="step">
-              <span class="step-num">1</span>
-              <div><strong>マルチプレイを開く</strong><p>Minecraftを起動し、「マルチプレイ」からサーバー追加画面を開きます。</p></div>
-            </div>
-            <div class="step">
-              <span class="step-num">2</span>
-              <div><strong>アドレスを入力</strong><p><b>mc.yutene.net</b> をサーバーアドレスに入力します。</p></div>
-            </div>
-            <div class="step">
-              <span class="step-num">3</span>
-              <div><strong>サーバーに接続</strong><p>追加したYutene Serverを選んで接続します。</p></div>
-            </div>
-          </div>
-        </article>
-        <article class="join-card">
-          <h3>統合版</h3>
-          <p style="margin:0;color:var(--muted)">統合版向けの参加方法は、接続設定が確定したあとに掲載します。</p>
-          <span class="pending">準備中</span>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="news">
-    <div class="wrap">
-      <p class="eyebrow">NEWS</p>
-      <h2 class="section-title">最近のお知らせ</h2>
-      <div class="news-list">
-        <div class="news-item">
-          <span class="news-date">2026.09.09</span>
-          <span class="news-title">Yutene Server公式サイトを公開しました</span>
-          <span class="news-tag">サイト</span>
-        </div>
-        <div class="news-item">
-          <span class="news-date">2026.09.09</span>
-          <span class="news-title">各ページ・機能を順次追加しています</span>
-          <span class="news-tag">お知らせ</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section section-white" id="status">
-    <div class="wrap">
-      <p class="eyebrow">INFORMATION</p>
-      <h2 class="section-title">その他</h2>
-      <div class="utility-grid">
-        <article class="utility-card">
-          <h3>サーバーステータス</h3>
-          <p>各サーバーの稼働状況を確認できるページを追加予定です。</p>
-          <span class="state">準備中</span>
-        </article>
-        <article class="utility-card" id="rules">
-          <h3>ルール</h3>
-          <p>参加前に確認するルール・利用上の注意を掲載予定です。</p>
-          <span class="state">準備中</span>
-        </article>
-      </div>
-    </div>
-  </section>
+  </div>
+</section>
 </main>
 
 <footer class="footer">
   <div class="wrap">
-    <div class="footer-top">
-      <div><strong>Yutene Server</strong><p>Minecraft multiplayer server.</p></div>
-      <p>当サイトおよびYutene Serverは、Minecraft、Mojang Studios、Microsoftの公式サービスではなく、各社との提携・承認関係はありません。</p>
-    </div>
+    <strong>Yutene</strong>
+    <p>Minecraftサーバー、MOD、プラグインなどの活動をまとめたサイトです。</p>
     <div class="footer-copy">
-      © <span id="year"></span> Yutene Server
-      <span aria-hidden="true"> ・ </span>
-      <a href="/terms/">利用規約</a>
-      <span aria-hidden="true"> ・ </span>
-      <a href="/privacy/">プライバシーポリシー</a>
+      © <span id="year"></span> Yutene
+      <span aria-hidden="true"> ・ </span><a href="/terms/">利用規約</a>
+      <span aria-hidden="true"> ・ </span><a href="/privacy/">プライバシーポリシー</a>
     </div>
   </div>
 </footer>
 
-<script>
-const overlay=document.getElementById("menuOverlay");
-const openBtn=document.getElementById("menuOpen");
-const closeBtn=document.getElementById("menuClose");
-
-function openMenu(){
-  overlay.classList.add("show");
-  overlay.setAttribute("aria-hidden","false");
-  openBtn.setAttribute("aria-expanded","true");
-  document.body.classList.add("menu-open");
-}
-function closeMenu(){
-  overlay.classList.remove("show");
-  overlay.setAttribute("aria-hidden","true");
-  openBtn.setAttribute("aria-expanded","false");
-  document.body.classList.remove("menu-open");
-}
-openBtn.addEventListener("click",openMenu);
-closeBtn.addEventListener("click",closeMenu);
-overlay.addEventListener("click",e=>{if(e.target===overlay)closeMenu()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMenu()});
-overlay.querySelectorAll("a").forEach(a=>a.addEventListener("click",closeMenu));
-
-const address="mc.yutene.net";
-const copyBtn=document.getElementById("copyAddress");
-const copyResult=document.getElementById("copyResult");
-copyBtn.addEventListener("click",async()=>{
-  try{
-    await navigator.clipboard.writeText(address);
-    copyBtn.textContent="COPIED";
-    copyResult.textContent="コピーしました";
-    setTimeout(()=>{copyBtn.textContent="COPY";copyResult.textContent=""},1600);
-  }catch{
-    copyResult.textContent=address;
-  }
-});
-document.getElementById("year").textContent=new Date().getFullYear();
-</script>
+<script src="/script.js"></script>
 </body>
 </html>

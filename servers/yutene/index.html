@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="description" content="Towny・経済・Jobs・mcMMOなどを中心に遊ぶYuteneのメインMinecraftサーバーです。">
+<meta name="description" content="生活・経済を中心に遊び、Casinoと経済を共有するYuteneのメインMinecraftサーバーです。">
 <meta name="theme-color" content="#101712">
 <link rel="canonical" href="https://yutene.net/servers/yutene/">
 <link rel="icon" href="/favicon.svg" type="image/svg+xml">
@@ -11,7 +11,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Yutene">
 <meta property="og:title" content="Yutene Server | Yutene">
-<meta property="og:description" content="Towny・経済・Jobs・mcMMOなどを中心に遊ぶYuteneのメインMinecraftサーバーです。">
+<meta property="og:description" content="生活・経済を中心に遊び、Casinoと経済を共有するYuteneのメインMinecraftサーバーです。">
 <meta property="og:url" content="https://yutene.net/servers/yutene/">
 <meta property="og:image" content="https://yutene.net/og.png">
 <meta name="twitter:card" content="summary_large_image">
@@ -19,86 +19,58 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-
 <header class="header">
   <div class="header-inner">
     <a class="brand" href="/"><span class="brand-mark">Y</span><span>YUTENE</span></a>
-    <button class="menu-button" id="menuOpen" aria-label="メニューを開く" aria-expanded="false">
-      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
-    </button>
+    <button class="menu-button" id="menuOpen" aria-label="メニューを開く" aria-expanded="false"><span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span></button>
   </div>
 </header>
-<div class="overlay" id="menuOverlay" aria-hidden="true">
-  <aside class="drawer" aria-label="メニュー">
-    <div class="drawer-head">
-      <span class="drawer-title">MENU</span>
-      <button class="close" id="menuClose" aria-label="メニューを閉じる">×</button>
-    </div>
-    <nav class="drawer-nav">
-      <a href="/"><span>ホーム</span><small>HOME</small></a>
-      <a href="/servers/"><span>サーバー</span><small>SERVERS</small></a>
-      <a href="/join/"><span>参加方法</span><small>JOIN</small></a>
-      <a href="/status/"><span>ステータス</span><small>STATUS</small></a>
-      <a href="/rules/"><span>ルール</span><small>RULES</small></a>
-      <a href="/news/"><span>お知らせ</span><small>NEWS</small></a>
-      <div class="drawer-sep"></div>
-      <a href="/creations/"><span>制作物</span><small>CREATIONS</small></a>
-      <div class="drawer-disabled" aria-disabled="true"><span>アカウント</span><span class="not-ready">未実装</span></div>
-    </nav>
-  </aside>
-</div>
+<div class="overlay" id="menuOverlay" aria-hidden="true"><aside class="drawer" aria-label="メニュー"><div class="drawer-head"><span class="drawer-title">MENU</span><button class="close" id="menuClose" aria-label="メニューを閉じる">×</button></div><nav class="drawer-nav"></nav></aside></div>
 
 <main>
 <section class="page-hero">
   <div class="wrap">
     <a class="back-link" href="/servers/">← サーバー一覧へ</a>
-    <p class="kicker">MAIN SERVER</p>
+    <p class="kicker">MAIN / ECONOMY</p>
     <h1>Yutene Server</h1>
-    <p>町づくり・経済・成長要素を中心に、長く遊べるメインサーバーです。</p>
+    <p>生活・経済を中心に遊び、Casinoと同じ経済圏を使うメインサーバーです。</p>
   </div>
 </section>
 
 <section class="section">
   <div class="wrap">
     <p class="eyebrow">ABOUT</p>
-    <h2 class="section-title">メインの生活サーバー</h2>
-    <p class="section-lead">町を作り、働き、取引しながら長く遊べるサーバーを目指しています。</p>
+    <h2 class="section-title">生活と経済のメインサーバー</h2>
+    <p class="section-lead">ここで遊んでお金を稼ぎ、その残高をCasinoでもそのまま使えます。</p>
 
     <div class="join-grid">
       <div class="info-card">
-        <h2>Towny</h2>
-        <p>町を作って土地を管理し、プレイヤー同士で拠点や街を発展させます。Towny戦争は行いません。</p>
+        <h2>経済</h2>
+        <p>Yutene ServerとCasinoは同じ残高を共有します。稼いだお金をサーバー間で移し替える必要はありません。</p>
       </div>
       <div class="info-card">
-        <h2>経済・ショップ</h2>
-        <p>QuickShopを使ったプレイヤー間取引を予定しています。価格設定や転売など、通常の市場活動は自由です。</p>
+        <h2>Casino連携</h2>
+        <p>Casinoは別サーバーですが、Yutene Serverとチャット・TAB・経済残高を共有し、ひとつの経済圏として扱います。</p>
       </div>
       <div class="info-card">
-        <h2>Jobs / mcMMO</h2>
-        <p>遊びながら成長できる要素を追加予定です。Jobsは最大3つまで所属できる予定です。</p>
+        <h2>生活</h2>
+        <p>サバイバルをベースに、長く遊びながら資産や拠点を育てていくサーバーです。</p>
       </div>
       <div class="info-card">
-        <h2>自由度</h2>
-        <p>AFKやサーバー内で完結する自動化は許可。PvPはOFFです。細かなプラグイン設定は今後調整します。</p>
+        <h2>Townyなし</h2>
+        <p>Towny前提のサーバーではありません。現在の構成に合わせて独自の経済・サーバー機能を中心に運用します。</p>
       </div>
     </div>
 
     <div class="quick-grid">
       <a class="quick-link" href="/rules/yutene/">ルールを見る<small>Yutene Server 固有ルール</small></a>
+      <a class="quick-link" href="/servers/casino/">Casinoを見る<small>同じ経済圏のカジノサーバー</small></a>
     </div>
   </div>
 </section>
-
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <strong>Yutene</strong>
-    <p>Minecraftサーバー、MOD、プラグインなどの活動をまとめたサイトです。</p>
-    <div class="footer-copy">© <span id="year"></span> Yutene</div>
-  </div>
-</footer>
+<footer class="footer"><div class="wrap"><strong>Yutene</strong><p>Minecraftサーバー、MOD、プラグインなどの活動をまとめたサイトです。</p><div class="footer-copy">© <span id="year"></span> Yutene</div></div></footer>
 <script src="/script.js"></script>
-
 </body>
 </html>

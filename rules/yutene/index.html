@@ -19,36 +19,8 @@
 <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-
-<header class="header">
-  <div class="header-inner">
-    <a class="brand" href="/"><span class="brand-mark">Y</span><span>YUTENE</span></a>
-    <button class="menu-button" id="menuOpen" aria-label="メニューを開く" aria-expanded="false">
-      <span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span>
-    </button>
-  </div>
-</header>
-<div class="overlay" id="menuOverlay" aria-hidden="true">
-  <aside class="drawer" aria-label="メニュー">
-    <div class="drawer-head">
-      <span class="drawer-title">MENU</span>
-      <button class="close" id="menuClose" aria-label="メニューを閉じる">×</button>
-    </div>
-    <nav class="drawer-nav">
-      <a href="/"><span>ホーム</span><small>HOME</small></a>
-      <a href="/servers/"><span>サーバー</span><small>SERVERS</small></a>
-      <a href="/join/"><span>参加方法</span><small>JOIN</small></a>
-      <a href="/status/"><span>ステータス</span><small>STATUS</small></a>
-      <a href="/rules/"><span>ルール</span><small>RULES</small></a>
-      <a href="/news/"><span>お知らせ</span><small>NEWS</small></a>
-      <div class="drawer-sep"></div>
-      <a href="/creations/"><span>制作物</span><small>CREATIONS</small></a>
-      <div class="drawer-disabled" aria-disabled="true">
-        <span>アカウント</span><span class="not-ready">未実装</span>
-      </div>
-    </nav>
-  </aside>
-</div>
+<header class="header"><div class="header-inner"><a class="brand" href="/"><span class="brand-mark">Y</span><span>YUTENE</span></a><button class="menu-button" id="menuOpen" aria-label="メニューを開く" aria-expanded="false"><span class="hamburger" aria-hidden="true"><span></span><span></span><span></span></span></button></div></header>
+<div class="overlay" id="menuOverlay" aria-hidden="true"><aside class="drawer" aria-label="メニュー"><div class="drawer-head"><span class="drawer-title">MENU</span><button class="close" id="menuClose" aria-label="メニューを閉じる">×</button></div><nav class="drawer-nav"></nav></aside></div>
 
 <main>
 <section class="page-hero">
@@ -64,75 +36,58 @@
   <div class="wrap">
     <div class="info-card">
       <h2>基本方針</h2>
-      <p>Towny・経済・Jobs・MCMMOなどを使って遊ぶメインサーバーです。AFK・自動化・市場競争は広く許可し、他人への直接的な迷惑行為や不正クライアントを制限します。</p>
+      <p>生活・経済を中心に遊ぶメインサーバーです。AFKやサーバー内で完結する自動化は広く許可し、盗難・他人への直接的な迷惑行為・不正クライアントなどを禁止します。</p>
     </div>
 
     <div class="join-grid">
       <div class="info-card">
         <h2>盗難</h2>
         <ul class="rule-list">
-          <li>盗難は禁止です。</li>
-          <li>ClaimやBoltによる保護の有無に関係なく、明らかに他人の所有物を無断で持ち出してはいけません。</li>
+          <li>他人の所有物を無断で持ち出す行為は禁止です。</li>
+          <li>保護の有無だけを理由に、明らかに他人の物を自由に持ち出してよいものとはしません。</li>
         </ul>
       </div>
 
       <div class="info-card">
-        <h2>Claim外・プレイヤーへの攻撃</h2>
+        <h2>プレイヤーへの攻撃</h2>
         <ul class="rule-list">
-          <li>Claim外の建築・地形は原則として保護対象外です。採掘、整地、破壊などは許可されます。</li>
-          <li>PvPはOFFです。</li>
-          <li>溶岩などを利用して他プレイヤーを故意に殺害する行為は禁止です。</li>
+          <li>他プレイヤーを故意に殺害・妨害する行為は禁止です。</li>
+          <li>溶岩、窒息、装置などを利用した間接的な殺害も同様です。</li>
         </ul>
       </div>
 
       <div class="info-card">
         <h2>クライアント・自動化</h2>
         <ul class="rule-list">
-          <li>Xray、マクロ、Freecam、Baritoneの使用は禁止です。</li>
+          <li>Xray、マクロ、Freecam、Baritoneなど、不正な優位を得る目的の機能は禁止です。</li>
           <li>AFKは許可されています。</li>
-          <li>レッドストーン、農場、トラップなど、サーバー内で完結する自動化は原則すべて許可されています。</li>
+          <li>レッドストーン、農場、トラップなど、サーバー内で完結する自動化は原則許可されています。</li>
           <li>外部マクロによる自動操作は、自動化とは別扱いで禁止です。</li>
         </ul>
       </div>
 
       <div class="info-card">
-        <h2>Towny</h2>
+        <h2>経済・Casino</h2>
         <ul class="rule-list">
-          <li>Towny戦争はありません。</li>
-          <li>TownはTownyの日次処理などによって正式に崩壊しない限り、長期間の放置だけを理由に運営が削除することはありません。</li>
+          <li>Yutene ServerとCasinoは同じゲーム内残高を共有します。</li>
+          <li>ゲーム内通貨やアイテムを、現実の金銭等と交換する行為は禁止です。</li>
+          <li>経済・カジノ機能の不具合や抜け道を意図的に悪用する行為は禁止です。</li>
         </ul>
       </div>
 
       <div class="info-card">
-        <h2>QuickShop</h2>
+        <h2>複数アカウント</h2>
         <ul class="rule-list">
-          <li>転売、値下げ、値上げ、価格競争など、通常の市場活動はすべて許可されています。</li>
-          <li>価格は各プレイヤーが自由に決められます。</li>
-        </ul>
-      </div>
-
-      <div class="info-card">
-        <h2>Jobs・複数アカウント</h2>
-        <ul class="rule-list">
-          <li>Jobsは最大3つまで所属できます。</li>
-          <li>複数アカウントでの参加は許可されています。</li>
-          <li>その他のTowny・Jobs等の細かな設定値は、サーバー仕様として別途案内します。</li>
+          <li>複数アカウントでの参加自体は許可されています。</li>
+          <li>BAN、Timeoutその他の制限を回避する目的で利用することは禁止です。</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
-
 </main>
 
-<footer class="footer">
-  <div class="wrap">
-    <strong>Yutene</strong>
-    <p>Minecraftサーバー、MOD、プラグインなどの活動をまとめたサイトです。</p>
-    <div class="footer-copy">© <span id="year"></span> Yutene</div>
-  </div>
-</footer>
+<footer class="footer"><div class="wrap"><strong>Yutene</strong><p>Minecraftサーバー、MOD、プラグインなどの活動をまとめたサイトです。</p><div class="footer-copy">© <span id="year"></span> Yutene</div></div></footer>
 <script src="/script.js"></script>
-
 </body>
 </html>
