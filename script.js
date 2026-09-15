@@ -1,6 +1,4 @@
 (function(){
-  // Keep the same drawer design, but normalize its order everywhere.
-  // Home → Servers → Join → Rules → News → Creations → Status → Account
   const drawerNav=document.querySelector(".drawer-nav");
   if(drawerNav){
     drawerNav.innerHTML=`
@@ -11,6 +9,9 @@
       <a href="/news/"><span>お知らせ</span><small>NEWS</small></a>
       <a href="/creations/"><span>制作物</span><small>CREATIONS</small></a>
       <a href="/status/"><span>ステータス</span><small>STATUS</small></a>
+      <div class="drawer-sep"></div>
+      <a href="/terms/"><span>利用規約</span><small>TERMS</small></a>
+      <a href="/privacy/"><span>プライバシーポリシー</span><small>PRIVACY</small></a>
       <div class="drawer-sep"></div>
       <a href="/account/"><span>アカウント</span><small>ACCOUNT</small></a>
     `;
@@ -64,7 +65,6 @@
   const year=document.getElementById("year");
   if(year) year.textContent=new Date().getFullYear();
 
-  // Live Minecraft network status
   const statusRoot=document.getElementById("liveStatus");
   if(statusRoot){
     const pill=document.getElementById("statusPill");
